@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "contract": "intl.collator.v1",
+  "locale": "en",
+  "options": { "sensitivity": "base" }
+}

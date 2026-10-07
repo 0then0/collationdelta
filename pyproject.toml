@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "collationdelta"
+version = "0.1.0"
+description = "Detect string ordering and equality changes before a runtime upgrade."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+dependencies = []
+
+[project.scripts]
+collationdelta = "collationdelta.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<10",
+    "ruff>=0.16.10,<1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+collationdelta = ["adapters/*.mjs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "RUF"]
+# The formatter wraps code where possible; long strings and comments may remain.
+ignore = ["E501"]

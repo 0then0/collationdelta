@@ -1,0 +1,36 @@
+name: Python core and Node adapter
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.21.0'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --locked --python '${{ matrix.python }}'
+      - run: uv run --locked ruff check .
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked pytest -q
+      - run: uv build
+      - name: Install wheel without dependencies and exercise installed CLI
+        shell: bash
+        run: |
+          uv venv "$RUNNER_TEMP/collationdelta-install" --python '${{ matrix.python }}'
+          uv pip install --no-deps --python "$RUNNER_TEMP/collationdelta-install/bin/python" dist/*.whl
+          cli="$RUNNER_TEMP/collationdelta-install/bin/collationdelta"
+          cd "$RUNNER_TEMP"
+          "$cli" --help
+          "$cli" capture --corpus "$GITHUB_WORKSPACE/examples/corpus.json" --profile "$GITHUB_WORKSPACE/examples/profile.json" --output baseline.json -- node "$("$cli" node-adapter)"
+          "$cli" compare baseline.json baseline.json --json-output report.json

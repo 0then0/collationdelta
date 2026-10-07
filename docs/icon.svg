@@ -1,0 +1,17 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="96"
+  height="96"
+  viewBox="0 0 96 96"
+  role="img"
+  aria-label="String comparison delta"
+>
+  <rect width="96" height="96" rx="20" fill="#142334" />
+  <g stroke="#e6edf3" stroke-width="4" stroke-linecap="round" fill="none">
+    <path
+      d="M19 27h14m-14 12h14m30-12h14m-14 12h14M19 60h14m-14 12h14m30-12h14m-14 12h14"
+    />
+    <path d="m53 26-10 7 10 7M42 61h12m-12 9h12" />
+  </g>
+  <path d="m48 43-5 9h10z" fill="#57c5b6" />
+</svg>

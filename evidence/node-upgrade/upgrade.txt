@@ -1,0 +1,22 @@
+DRIFT | findings=2 | complete=true
+old: entries=3 comparisons=9/9 missing=0 failed=0 complete=true
+new: entries=3 comparisons=9/9 missing=0 failed=0 complete=true
+Equality means compare(a, b) == 0.
+
+cd1-34b084f1c44b3567441844866cfd87a209f90e6809ed7e4964700aae41bdae59 equality_merge
+  "letters": "Rs" [U+0052 U+0073]
+  "rupee": "\u20a8" [U+20A8]
+  relation: +1 -> +0
+  old runtime={"arch": "arm64", "cldr": "44.1", "icu": "74.2", "node": "v18.20.8", "platform": "darwin", "unicode": "15.1"}
+  old effective={"caseFirst": "false", "collation": "default", "ignorePunctuation": false, "locale": "en", "numeric": false, "sensitivity": "base", "usage": "sort"}
+  new runtime={"arch": "arm64", "cldr": "48.0", "icu": "78.3", "node": "v24.21.0", "platform": "darwin", "unicode": "17.0"}
+  new effective={"caseFirst": "false", "collation": "default", "ignorePunctuation": false, "locale": "en", "numeric": false, "sensitivity": "base", "usage": "sort"}
+
+cd1-9b4d228611e3f68b9f0f5ea4ff6e1ca5b24c8fd8b1c2752d270eba637b246a72 order_reversal
+  "rupee": "\u20a8" [U+20A8]
+  "zero": "0" [U+0030]
+  relation: -1 -> +1
+  old runtime={"arch": "arm64", "cldr": "44.1", "icu": "74.2", "node": "v18.20.8", "platform": "darwin", "unicode": "15.1"}
+  old effective={"caseFirst": "false", "collation": "default", "ignorePunctuation": false, "locale": "en", "numeric": false, "sensitivity": "base", "usage": "sort"}
+  new runtime={"arch": "arm64", "cldr": "48.0", "icu": "78.3", "node": "v24.21.0", "platform": "darwin", "unicode": "17.0"}
+  new effective={"caseFirst": "false", "collation": "default", "ignorePunctuation": false, "locale": "en", "numeric": false, "sensitivity": "base", "usage": "sort"}

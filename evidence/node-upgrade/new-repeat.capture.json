@@ -1,0 +1,134 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "rupee",
+        "value": "\u20a8"
+      },
+      {
+        "id": "letters",
+        "value": "Rs"
+      },
+      {
+        "id": "zero",
+        "value": "0"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 9,
+    "consistency": "verified",
+    "entries": 3,
+    "expected_comparisons": 9,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:c22ebfd029060b4783abcdc630be5780e05391025bfbafc78a0d877d5ce4a522",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1",
+      "name": "collationdelta-intl",
+      "version": "0.1.0"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "base",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "letters",
+        "right": "letters",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "letters",
+        "right": "rupee",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "letters",
+        "right": "zero",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "rupee",
+        "right": "letters",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "rupee",
+        "right": "rupee",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "rupee",
+        "right": "zero",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "zero",
+        "right": "letters",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "zero",
+        "right": "rupee",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "zero",
+        "right": "zero",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "arch": "arm64",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "node": "v24.21.0",
+      "platform": "darwin",
+      "unicode": "17.0"
+    },
+    "status": "ok"
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/private/tmp/collationdelta-runtimes/node-v24.21.0-darwin-arm64/bin/node",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/node.mjs"
+    ],
+    "captured_at": "2026-10-07T06:10:44.912294+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.1.0"
+  }
+}

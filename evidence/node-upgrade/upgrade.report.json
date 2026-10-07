@@ -1,0 +1,130 @@
+{
+  "complete": true,
+  "finding_count": 2,
+  "findings": [
+    {
+      "id": "cd1-34b084f1c44b3567441844866cfd87a209f90e6809ed7e4964700aae41bdae59",
+      "kind": "equality_merge",
+      "new_relation": 0,
+      "old_relation": 1,
+      "records": [
+        {
+          "code_points": ["U+0052", "U+0073"],
+          "escaped": "\"Rs\"",
+          "id": "letters",
+          "value": "Rs"
+        },
+        {
+          "code_points": ["U+20A8"],
+          "escaped": "\"\\u20a8\"",
+          "id": "rupee",
+          "value": "\u20a8"
+        }
+      ]
+    },
+    {
+      "id": "cd1-9b4d228611e3f68b9f0f5ea4ff6e1ca5b24c8fd8b1c2752d270eba637b246a72",
+      "kind": "order_reversal",
+      "new_relation": 1,
+      "old_relation": -1,
+      "records": [
+        {
+          "code_points": ["U+20A8"],
+          "escaped": "\"\\u20a8\"",
+          "id": "rupee",
+          "value": "\u20a8"
+        },
+        {
+          "code_points": ["U+0030"],
+          "escaped": "\"0\"",
+          "id": "zero",
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.1.0"
+      },
+      "capture_digest": "sha256:2f2cb854d820f0d6f03e78c87a210e46597f54f77d14c0003d57cea596470139",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 9,
+        "consistency": "verified",
+        "entries": 3,
+        "expected_comparisons": 9,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.1.0"
+      },
+      "capture_digest": "sha256:e436449bf1d87f3ebccedf3f06ea3505e82f1bdc16b88a80299e8c480f4ba6d2",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 9,
+        "consistency": "verified",
+        "entries": 3,
+        "expected_comparisons": 9,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "44.1",
+        "icu": "74.2",
+        "node": "v18.20.8",
+        "platform": "darwin",
+        "unicode": "15.1"
+      },
+      "status": "ok"
+    }
+  },
+  "status": "DRIFT"
+}

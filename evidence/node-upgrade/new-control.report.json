@@ -1,0 +1,89 @@
+{
+  "complete": true,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.1.0"
+      },
+      "capture_digest": "sha256:c22ebfd029060b4783abcdc630be5780e05391025bfbafc78a0d877d5ce4a522",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 9,
+        "consistency": "verified",
+        "entries": 3,
+        "expected_comparisons": 9,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.1.0"
+      },
+      "capture_digest": "sha256:2f2cb854d820f0d6f03e78c87a210e46597f54f77d14c0003d57cea596470139",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 9,
+        "consistency": "verified",
+        "entries": 3,
+        "expected_comparisons": 9,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    }
+  },
+  "status": "STABLE"
+}

@@ -1,0 +1,71 @@
+{
+  "applications": {
+    "new": {
+      "distinct": ["\u20a8"],
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "input": ["\u20a8", "Rs"],
+      "runtime": {
+        "cldr": "48.0",
+        "icu": "78.3",
+        "node": "v24.21.0",
+        "unicode": "17.0"
+      },
+      "rupeeToLetters": 0,
+      "rupeeToZero": 1,
+      "sorted": ["\u20a8", "Rs"]
+    },
+    "old": {
+      "distinct": ["\u20a8", "Rs"],
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "input": ["\u20a8", "Rs"],
+      "runtime": {
+        "cldr": "44.1",
+        "icu": "74.2",
+        "node": "v18.20.8",
+        "unicode": "15.1"
+      },
+      "rupeeToLetters": -1,
+      "rupeeToZero": -1,
+      "sorted": ["\u20a8", "Rs"]
+    }
+  },
+  "binaries": {
+    "new": {
+      "archive": "node-v24.21.0-linux-arm64.tar.xz",
+      "sha256": "6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2",
+      "url": "https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-arm64.tar.xz"
+    },
+    "old": {
+      "archive": "node-v18.20.8-linux-arm64.tar.xz",
+      "sha256": "224e569dbe7b0ea4628ce383d9d482494b57ee040566583f1c54072c86d1116b",
+      "url": "https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-arm64.tar.xz"
+    }
+  },
+  "controls": {
+    "new": "STABLE",
+    "old": "STABLE"
+  },
+  "experiment_version": 1,
+  "offline_comparison": "DRIFT",
+  "repeatable_observations": {
+    "new": true,
+    "old": true
+  },
+  "scope": "whole Node runtime upgrade; demonstration application, not production incident"
+}

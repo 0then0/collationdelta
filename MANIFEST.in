@@ -1,0 +1,7 @@
+include uv.lock
+recursive-include docs *.md *.svg
+recursive-include examples *.json *.py *.mjs
+recursive-include scripts *.py *.json
+recursive-include evidence *.json *.txt
+recursive-include tests *.py
+recursive-include .github *.yml

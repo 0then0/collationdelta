@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "entries": [
+    { "id": "rupee", "value": "₨" },
+    { "id": "letters", "value": "Rs" },
+    { "id": "zero", "value": "0" }
+  ]
+}
