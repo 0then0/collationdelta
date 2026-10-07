@@ -31,11 +31,18 @@ uvx --from twine==6.2.0 twine check --strict dist/*
 
 Use a fresh checkout or an empty build output directory so that `dist/` contains only the intended wheel and source archive. Twine is an isolated release-check tool, not a runtime or project dependency.
 
-Commit and push the prepared files before creating the tag. Wait for CI to pass. In [GitHub Releases](https://github.com/0then0/collationdelta/releases/new), create a release using tag `v0.1.0` on the prepared commit, title `v0.1.0`, and the 0.1.0 changelog entry as its description. Publishing a non-prerelease GitHub Release starts `release.yml`; creating only a tag or saving a draft does not publish to PyPI.
+Commit and push the prepared files, then wait for CI to pass. Push a version tag on the prepared commit to start the release without a browser or a personal API token:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+`release.yml` creates a public GitHub Release from the matching changelog entry, attaches the checked distributions, and publishes to PyPI. Creating a release with a matching tag through [GitHub Releases](https://github.com/0then0/collationdelta/releases/new) is also supported; draft and prerelease events do not publish. GitHub Release creation uses the workflow's `GITHUB_TOKEN`, whose generated events do not trigger another release workflow run.
 
 ## Publication
 
-The workflow reruns the Linux/macOS Python matrix, verifies the tag against both version declarations, builds and checks distributions, then uploads the same artifacts in a separate `pypi` environment job. Only that job receives `id-token: write`. Approve the environment deployment if required by its settings.
+The workflow reruns the Linux/macOS Python matrix, verifies the tag against both version declarations, builds and checks distributions, creates or finds the GitHub Release and attaches its artifacts in a job with `contents: write`, then uploads the same artifacts in a separate `pypi` environment job. Only that job receives `id-token: write`. Approve the environment deployment if required by its settings.
 
 Verify the workflow result, uploaded files, and version on [PyPI](https://pypi.org/project/collationdelta/). Then install the published version in a clean environment:
 
