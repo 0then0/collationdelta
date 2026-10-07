@@ -84,13 +84,17 @@ def test_decimal_zero_and_metadata_numbers_remain_json_compatible(make_capture):
 
 
 @pytest.mark.parametrize("kind", ["equality_merge", "equality_split", "order_reversal"])
-@pytest.mark.parametrize("orientation", ["forward", "reverse"])
+@pytest.mark.parametrize("old_orientation", ["forward", "reverse"])
+@pytest.mark.parametrize("new_orientation", ["forward", "reverse"])
 def test_partial_capture_keeps_direct_pair_witness_without_diagonals(
-    make_capture, kind, orientation
+    make_capture, kind, old_orientation, new_orientation
 ):
-    def keep_witness(reply):
-        pair = ("0", "1") if orientation == "forward" else ("1", "0")
-        reply["results"] = [r for r in reply["results"] if (r["left"], r["right"]) == pair]
+    def keep_witness(orientation):
+        def mutate(reply):
+            pair = ("0", "1") if orientation == "forward" else ("1", "0")
+            reply["results"] = [r for r in reply["results"] if (r["left"], r["right"]) == pair]
+
+        return mutate
 
     before = (lambda a, b: 0) if kind == "equality_split" else sign
     after = (lambda a, b: 0) if kind == "equality_merge" else (lambda a, b: -sign(a, b))
@@ -98,25 +102,45 @@ def test_partial_capture_keeps_direct_pair_witness_without_diagonals(
     new = make_capture(("a", "b"), comparator=after)
     complete = compare(old, new)
     partial = compare(
-        make_capture(("a", "b"), comparator=before, mutate=keep_witness),
-        make_capture(("a", "b"), comparator=after, mutate=keep_witness),
+        make_capture(("a", "b"), comparator=before, mutate=keep_witness(old_orientation)),
+        make_capture(("a", "b"), comparator=after, mutate=keep_witness(new_orientation)),
     )
     assert partial["status"] == "DRIFT_INCOMPLETE" and not partial["complete"]
+    assert all(side["coverage"]["completed_comparisons"] == 1 for side in partial["sides"].values())
+    assert all(side["coverage"]["missing_comparisons"] == 3 for side in partial["sides"].values())
     assert partial["findings"] == complete["findings"]
     assert partial["findings"][0]["kind"] == kind
 
 
-def test_different_observed_orientations_are_not_a_direct_witness(make_capture):
-    def forward(reply):
-        reply["results"] = [r for r in reply["results"] if (r["left"], r["right"]) == ("0", "1")]
+@pytest.mark.parametrize("old_pair", [("0", "1"), ("1", "0")])
+@pytest.mark.parametrize("equal", [False, True])
+def test_unchanged_opposite_orientations_remain_incomplete(make_capture, old_pair, equal):
+    def keep(pair):
+        def mutate(reply):
+            reply["results"] = [r for r in reply["results"] if (r["left"], r["right"]) == pair]
 
-    def reverse(reply):
-        reply["results"] = [r for r in reply["results"] if (r["left"], r["right"]) == ("1", "0")]
+        return mutate
 
-    old = make_capture(("a", "b"), mutate=forward)
-    new = make_capture(("a", "b"), comparator=lambda a, b: -sign(a, b), mutate=reverse)
+    comparator = (lambda a, b: 0) if equal else sign
+    old = make_capture(("a", "b"), comparator=comparator, mutate=keep(old_pair))
+    new = make_capture(("a", "b"), comparator=comparator, mutate=keep(old_pair[::-1]))
     report = compare(old, new)
-    assert report["status"] == "INCOMPLETE" and report["finding_count"] == 0
+    assert report["status"] == "INCOMPLETE" and not report["complete"]
+    assert report["finding_count"] == 0
+
+
+@pytest.mark.parametrize("status", ["error", "unresolved", "missing"])
+def test_pair_without_success_on_one_side_is_not_a_finding(make_capture, status):
+    def no_success(reply):
+        reply["results"] = (
+            []
+            if status == "missing"
+            else [{"left": "0", "right": "1", "status": status, "reason": "not observed"}]
+        )
+
+    report = compare(make_capture(("a", "b")), make_capture(("a", "b"), mutate=no_success))
+    assert report["status"] == "INCOMPLETE" and not report["complete"]
+    assert report["finding_count"] == 0
 
 
 def test_failed_diagonal_does_not_hide_observed_reversal(make_capture):

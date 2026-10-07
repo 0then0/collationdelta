@@ -78,9 +78,13 @@ def test_canonicalization_negotiation_and_extensions(locale):
         ("en-x-u-kf-upper", False, "false"),
         ("en-u-kn-true-x-u-kf-upper", True, "false"),
         ("en-u-kf-upper-x-u-kn-true", False, "upper"),
+        ("en-u-kn-true-v-foo", True, "false"),
+        ("en-u-kn-false-v-foo", False, "false"),
+        ("en-u-kf-upper-v-foo", False, "upper"),
+        ("en-u-kf-lower-v-foo", False, "lower"),
     ],
 )
-def test_private_use_tokens_do_not_become_unicode_extension_options(locale, numeric, case_first):
+def test_locale_extension_boundaries_match_intl(locale, numeric, case_first):
     cap = capture(document(["2", "10"]), requested(locale, {}), [NODE, str(ADAPTER)])
     direct = json.loads(
         subprocess.check_output(

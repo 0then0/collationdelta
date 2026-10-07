@@ -129,14 +129,18 @@ def compare(old, new):
             }
         return records_by_id[entry_id]
 
+    def oriented_relation(relations, a, b):
+        if (a, b) in relations:
+            return relations[a, b]
+        reverse = relations.get((b, a))
+        return -reverse if reverse is not None else None
+
     for a, b in itertools.combinations(sorted(left), 2):
-        # Use the same directly observed orientation on both sides. Reverse
-        # witnesses are oriented by stable ID without inferring a missing result.
-        if (a, b) in old_rel and (a, b) in new_rel:
-            before, after = old_rel[a, b], new_rel[a, b]
-        elif (b, a) in old_rel and (b, a) in new_rel:
-            before, after = -old_rel[b, a], -new_rel[b, a]
-        else:
+        # Each side can observe either direction of the same unordered pair.
+        # Normalize signs without counting the missing direction as completed.
+        before = oriented_relation(old_rel, a, b)
+        after = oriented_relation(new_rel, a, b)
+        if before is None or after is None:
             continue
         kind = None
         if before != 0 and after == 0:

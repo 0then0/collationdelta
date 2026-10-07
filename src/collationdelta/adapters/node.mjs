@@ -78,10 +78,11 @@ function observe(request) {
   const extensions = new Map();
   const u = canonical.toLowerCase().split('-x-')[0].split('-u-')[1]?.split('-') ?? [];
   for (let i = 0; i < u.length; i++) {
+    if (u[i].length === 1) break; // The next locale extension starts here.
     if (u[i].length === 2) {
       const key = u[i];
       const parts = [];
-      while (i + 1 < u.length && u[i + 1].length !== 2) parts.push(u[++i]);
+      while (i + 1 < u.length && u[i + 1].length > 2) parts.push(u[++i]);
       extensions.set(key, parts.join('-') || 'true');
     }
   }

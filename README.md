@@ -90,7 +90,7 @@ Human reports begin with status and coverage: entries, expected/completed compar
 - **2:** `INCOMPLETE` or `DRIFT_INCOMPLETE`. Capture also returns 2 for unsupported/unresolved configuration or missing/failed comparisons and saves the valid partial evidence.
 - **3:** `ERROR`: invalid input, incompatible captures, inconsistent relations, digest failure, launch/crash/timeout/output limit failure, or malformed protocol. No new capture is written on a transport/protocol error.
 
-Incomplete comparison preserves findings from an ordered pair observed successfully on both sides, even when diagonal or reciprocal observations are missing. A shared reverse pair is oriented by stable IDs. Unknown results are never equality. A successful process with missing pair responses produces explicit incomplete coverage; duplicate or unrequested pair responses are protocol errors. A crash with partial stdout is a transport error because a single-batch response cannot be trusted as a finished protocol document.
+Incomplete comparison preserves findings for a pair observed successfully in either direction on each side, even when diagonal or reciprocal observations are missing. Each side is independently oriented by stable IDs; the inferred reverse sign does not increase completed coverage. Unknown results are never equality. A successful process with missing pair responses produces explicit incomplete coverage; duplicate or unrequested pair responses are protocol errors. A crash with partial stdout is a transport error because a single-batch response cannot be trusted as a finished protocol document.
 
 ## Real runtime upgrade evidence
 

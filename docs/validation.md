@@ -6,9 +6,9 @@ This report records checks actually completed on **7 October 2026**. GitHub Acti
 
 - macOS arm64: Python **3.12.15**, **3.13.15**, **3.14.8**, with Node **24.21.0 / ICU 78.3 / CLDR 48.0 / Unicode 17.0**. The full suite passed on each interpreter.
 - Linux arm64, Debian bookworm: Python **3.14.8**, with the official Node **24.21.0** binary and the same provider versions. The full suite passed against the installed wheel in a disposable container.
-- The Node adapter's **20 integration tests** also passed against official Node **18.20.8 / ICU 74.2 / CLDR 44.1 / Unicode 15.1** on macOS arm64.
+- The Node adapter's **24 integration tests** also passed against official Node **18.20.8 / ICU 74.2 / CLDR 44.1 / Unicode 15.1** on macOS arm64.
 
-The full suite contains **102 tests**. Linux execution used the existing Python image `python@sha256:c8137f4c460908c8763f281c8f22c431eb5c538514ba9553fc3a89c06b7cfb88`. The checkout was mounted read-only. The wheel was installed without dependencies in a fresh environment; pytest was added only after exercising the installed CLI.
+The full suite contains **118 tests**. Linux execution used the existing Python image `python@sha256:c8137f4c460908c8763f281c8f22c431eb5c538514ba9553fc3a89c06b7cfb88`. The checkout was mounted read-only. The wheel was installed without dependencies in a fresh environment; pytest was added only after exercising the installed CLI.
 
 ## Core and adapter verification
 
@@ -18,7 +18,7 @@ Ruff **0.16.10** was added as a development dependency. Python sources were form
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked pytest -q
-# 102 passed on macOS arm64 / Python 3.12.15.
+# 118 passed on macOS arm64 / Python 3.12.15.
 ```
 
 The configuration targets Python 3.12 and 100 columns, with rules `E`, `F`, `I`, `UP`, `B`, and `RUF`. `E501` is excluded so that long strings and comments do not conflict with the formatter's wrapping policy. CI runs both lint and format checks before tests.
@@ -37,7 +37,7 @@ PATH=/tmp/collationdelta-node/node-v18.20.8-darwin-arm64/bin:$PATH \
 
 Local runs used equivalent `/private/tmp` directories and `UV_CACHE_DIR=/private/tmp/collationdelta-uv-cache` to keep disposable files outside the user-wide cache. Path choices do not affect the comparator.
 
-Tests protect drift types, unchanged relations, sorted-snapshot blind spots, distinct collation-equal values, duplicate values under different IDs, Unicode/control preservation, incompatible profiles/corpora, strict response mapping/types, unsupported configuration, malformed output, launch/crash/timeout/output limits, concurrent stdin/stderr I/O, descendant-held pipes, finite-order contradictions, corrupted or misleading captures, partial evidence without diagonals or reciprocal results, exact comparator signs for underflow/overflow magnitudes, private-use locale subtags, atomic writes under file-size and replacement failures, bounded allocations for large reports, stable finding IDs, deterministic reports, and offline operation. The maximum corpus exercises all **65,536** comparisons. Recomputing an invalid capture's digest cannot bypass consistency validation.
+Tests protect drift types, unchanged relations, sorted-snapshot blind spots, distinct collation-equal values, duplicate values under different IDs, Unicode/control preservation, incompatible profiles/corpora, strict response mapping/types, unsupported configuration, malformed output, launch/crash/timeout/output limits, concurrent stdin/stderr I/O, descendant-held pipes, finite-order contradictions, corrupted or misleading captures, partial evidence without diagonals or reciprocal results, drift across opposite observed pair orientations with unchanged coverage and finding IDs, exact comparator signs for underflow/overflow magnitudes, private-use locale subtags and boundaries between Unicode and subsequent locale extensions, atomic writes under file-size and replacement failures, bounded allocations for large reports, stable finding IDs, deterministic reports, and offline operation. The maximum corpus exercises all **65,536** comparisons. Recomputing an invalid capture's digest cannot bypass consistency validation.
 
 ## Packaging and offline operation
 
