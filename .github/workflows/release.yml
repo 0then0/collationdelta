@@ -1,0 +1,71 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pypi-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    if: startsWith(github.event.release.tag_name, 'v') && !github.event.release.prerelease
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - name: Validate release version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python - <<'PY'
+          import os
+          import runpy
+          import tomllib
+          from pathlib import Path
+
+          project = tomllib.loads(Path('pyproject.toml').read_text())['project']
+          version = project['version']
+          runtime_version = runpy.run_path('src/collationdelta/__init__.py')['__version__']
+          if project['name'] != 'collationdelta' or os.environ['RELEASE_TAG'] != f'v{version}' or runtime_version != version:
+              raise SystemExit('Release tag, package name, and version metadata must agree')
+          PY
+      - run: uv lock --check
+      - run: uv build
+      - run: uvx --from twine==6.2.0 twine check --strict dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distributions
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/collationdelta/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: distributions
+          path: dist
+      - name: Publish distributions with Trusted Publishing
+        uses: pypa/gh-action-pypi-publish@release/v1

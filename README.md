@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/icon.svg" width="88" height="88" alt="CollationDelta: two string relations joined by a delta" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/0then0/collationdelta/main/docs/icon.svg" width="88" height="88" alt="CollationDelta: two string relations joined by a delta" /></p>
 
 # CollationDelta
 
@@ -17,7 +17,21 @@ It reports equality merges, equality splits, and order reversals as individual p
 
 Python 3.12 or newer is required. Node is needed only to capture through the included `Intl.Collator` adapter. There are no Python runtime dependencies and no npm dependencies.
 
-From this source checkout:
+For a published release, install from PyPI:
+
+```sh
+pip install collationdelta==0.1.0
+collationdelta --help
+```
+
+To try the source checkout, including the example input files:
+
+```sh
+git clone https://github.com/0then0/collationdelta.git
+cd collationdelta
+```
+
+Then run:
 
 ```sh
 uv sync --locked --python 3.12
@@ -43,7 +57,7 @@ uv pip install --python /tmp/collationdelta-install/bin/python dist/collationdel
 /tmp/collationdelta-install/bin/collationdelta --help
 ```
 
-This release has not been published to PyPI. The Node adapter ships inside the wheel; `collationdelta node-adapter` prints its location after installation.
+The Node adapter ships inside the wheel; `collationdelta node-adapter` prints its location after installation.
 
 ## Inputs and guarantees
 
@@ -77,7 +91,7 @@ The corpus must have **1–256 entries**. Each capture requests all `n²` ordere
 
 The requested profile is distinct from adapter-reported effective settings and runtime/provider metadata. The Node adapter reports `process.version`, ICU, CLDR and Unicode versions when available, and `resolvedOptions()`. A custom adapter's version claim is evidence supplied by that adapter, not independent verification of its environment.
 
-Supported Node options are `sensitivity`, `numeric`, `caseFirst`, `ignorePunctuation`, `usage`, and `collation`. The adapter delegates every comparison to `Intl.Collator`. It allows locale canonicalization and lookup negotiation, such as `EN-us` or a supported language with an unavailable region. Unsupported locales and silently ignored explicit collations are reported as unsupported. Explicit options and the recognized `co`, `kn`, `kf` locale extensions must resolve; explicit options take precedence over extensions. Other locale extensions do not define this adapter's comparison contract. See [the protocol guide](docs/protocol.md) for the exact option values and custom adapters.
+Supported Node options are `sensitivity`, `numeric`, `caseFirst`, `ignorePunctuation`, `usage`, and `collation`. The adapter delegates every comparison to `Intl.Collator`. It allows locale canonicalization and lookup negotiation, such as `EN-us` or a supported language with an unavailable region. Unsupported locales and silently ignored explicit collations are reported as unsupported. Explicit options and the recognized `co`, `kn`, `kf` locale extensions must resolve; explicit options take precedence over extensions. Other locale extensions do not define this adapter's comparison contract. See [the protocol guide](https://github.com/0then0/collationdelta/blob/main/docs/protocol.md) for the exact option values and custom adapters.
 
 ## Results and exit codes
 
@@ -94,7 +108,7 @@ Incomplete comparison preserves findings for a pair observed successfully in eit
 
 ## Real runtime upgrade evidence
 
-The [reproducible case study](docs/case-study.md) compares the official Node **18.20.8 / ICU 74.2 / CLDR 44.1** and **24.21.0 / ICU 78.3 / CLDR 48.0** binaries with the same `en` / `sensitivity: base` profile. Saved captures and reports are in [evidence/node-upgrade](evidence/node-upgrade). They show an equality merge for `₨` / `Rs` and an order reversal for `₨` / `0`, a same-runtime control, repeated observations, and offline analysis.
+The [reproducible case study](https://github.com/0then0/collationdelta/blob/main/docs/case-study.md) compares the official Node **18.20.8 / ICU 74.2 / CLDR 44.1** and **24.21.0 / ICU 78.3 / CLDR 48.0** binaries with the same `en` / `sensitivity: base` profile. Saved captures and reports are in [evidence/node-upgrade](https://github.com/0then0/collationdelta/tree/main/evidence/node-upgrade). They show an equality merge for `₨` / `Rs` and an order reversal for `₨` / `0`, a same-runtime control, repeated observations, and offline analysis.
 
 The two-element sorted snapshot `["₨", "Rs"]` stays the same while equality changes. The included **demonstration application example** sorts and removes adjacent collation-equal strings; its result changes from two records to one. This is a demonstration, not an external production incident. The experiment upgrades the entire Node runtime and does not isolate the effect of ICU alone.
 
@@ -132,6 +146,10 @@ Tests cover drift types, Unicode preservation, finite-order consistency, strict 
 
 Ruff checks Python errors, imports, Python 3.12 modernization, and common bug patterns with a 100-column formatting target. To apply formatting, run `uv run --locked ruff format .`. The formatter controls wrapping; long strings and comments are exempt from the linter's line-length check.
 
-The CLI's POSIX process transport targets Linux and macOS. CI is configured for both with Python 3.12–3.14 and Node 24.21.0, including clean-wheel installation. Local verification results and unverified platform claims are recorded in the [validation report](docs/validation.md). Windows adapter execution is unsupported in v0.1.
+The CLI's POSIX process transport targets Linux and macOS. CI is configured for both with Python 3.12–3.14 and Node 24.21.0, including clean-wheel installation. Local verification results and unverified platform claims are recorded in the [validation report](https://github.com/0then0/collationdelta/blob/main/docs/validation.md). Windows adapter execution is unsupported in v0.1.
 
-The existing [Apache-2.0 license](LICENSE) applies to this project. Node downloads remain separate, external artifacts with their own licensing.
+The existing [Apache-2.0 license](https://github.com/0then0/collationdelta/blob/main/LICENSE) applies to this project. Node downloads remain separate, external artifacts with their own licensing.
+
+## Releases
+
+Release notes are in the [changelog](https://github.com/0then0/collationdelta/blob/main/CHANGELOG.md). Maintainers can follow the [release guide](https://github.com/0then0/collationdelta/blob/main/docs/releasing.md) to publish a version through PyPI Trusted Publishing.

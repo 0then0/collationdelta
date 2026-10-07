@@ -9,7 +9,28 @@ description = "Detect string ordering and equality changes before a runtime upgr
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
+keywords = ["collation", "unicode", "cli", "runtime-upgrade", "drift-detection"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Testing",
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/0then0/collationdelta"
+Repository = "https://github.com/0then0/collationdelta"
+Documentation = "https://github.com/0then0/collationdelta/blob/main/README.md"
+Issues = "https://github.com/0then0/collationdelta/issues"
+Changelog = "https://github.com/0then0/collationdelta/blob/main/CHANGELOG.md"
 
 [project.scripts]
 collationdelta = "collationdelta.cli:main"

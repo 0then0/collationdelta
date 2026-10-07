@@ -58,6 +58,14 @@ All returned exit **0**: capture completed **9/9** comparisons and comparison re
 
 Offline analysis used `PATH=/nonexistent`, the absolute installed CLI path, and the saved old/new capture paths. It returned exit **1**, `DRIFT`, **2 findings**, and wrote the full JSON report. No Node executable could be resolved through PATH. A unit test also compares a baseline whose recorded adapter path does not exist.
 
+## Release packaging and publishing configuration
+
+The v0.1.0 distributions passed `uvx --from twine==6.2.0 twine check --strict dist/*`. Package metadata includes repository/documentation/issue/changelog URLs and the Apache-2.0 license file. All README links and the project image use absolute HTTPS URLs. The source distribution includes the changelog, release guide, and publishing workflow.
+
+Both workflows passed actionlint **1.7.7**. The publishing workflow's version guard accepted `v0.1.0` and rejected `v0.1` and `v0.2.0`. The rebuilt wheel passed a fresh Python 3.12 installation, version check, real Node capture, same-runtime control, and offline comparison against the saved golden report. The full **118-test** suite and Ruff checks passed after the packaging changes.
+
+These checks validate local artifacts and workflow structure. PyPI authentication and upload require the repository environment and Trusted Publisher setup described in the [release guide](releasing.md); an actual publishing run was not performed during these checks.
+
 ## Historical experiment
 
 ```sh
