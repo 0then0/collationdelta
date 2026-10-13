@@ -1,0 +1,52 @@
+name: Native Chromium adapter
+on: [push, pull_request, workflow_dispatch, workflow_call]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.21.0'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --locked --python 3.10
+      - run: npm ci --ignore-scripts --prefix scripts/browser-toolchain
+      - name: Explicitly install pinned automation browser into disposable CI storage
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/cd-browsers
+        run: node scripts/browser-toolchain/node_modules/playwright-core/cli.js install chromium
+      - name: Require real browser tests and current-build acceptance
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/cd-browsers
+        shell: bash
+        run: |
+          export COLLATIONDELTA_BROWSER_TOOLCHAIN="$GITHUB_WORKSPACE/scripts/browser-toolchain"
+          export COLLATIONDELTA_BROWSER_EXECUTABLE="$(node -e "console.log(require('./scripts/browser-toolchain/node_modules/playwright-core').chromium.executablePath())")"
+          test -x "$COLLATIONDELTA_BROWSER_EXECUTABLE"
+          uv run --locked pytest -q tests/test_browser.py
+          uv run --locked python scripts/reproduce_browser_case.py --node "$(command -v node)" --browser "$COLLATIONDELTA_BROWSER_EXECUTABLE" --toolchain "$COLLATIONDELTA_BROWSER_TOOLCHAIN" --output "$RUNNER_TEMP/browser-evidence"
+      - name: Install wheel and run packaged browser adapter
+        shell: bash
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/cd-browsers
+        run: |
+          uv build
+          uv venv "$RUNNER_TEMP/cd-browser-install" --python 3.10
+          uv pip install --no-deps --python "$RUNNER_TEMP/cd-browser-install/bin/python" dist/*.whl
+          cli="$RUNNER_TEMP/cd-browser-install/bin/collationdelta"
+          browser="$(node -e "console.log(require('./scripts/browser-toolchain/node_modules/playwright-core').chromium.executablePath())")"
+          cd "$RUNNER_TEMP"
+          "$cli" capture --corpus "$GITHUB_WORKSPACE/examples/browser/corpus.json" --profile "$GITHUB_WORKSPACE/examples/browser/en.profile.json" --output browser-installed.json -- node "$("$cli" browser-adapter)" --toolchain "$GITHUB_WORKSPACE/scripts/browser-toolchain" --executable "$browser"
+          PATH='' "$cli" compare browser-installed.json browser-installed.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-browser-evidence
+          path: ${{ runner.temp }}/browser-evidence

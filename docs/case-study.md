@@ -2,7 +2,7 @@
 
 The same requested comparator, `new Intl.Collator("en", { sensitivity: "base" })`, produces different relations in official Node 18.20.8 and 24.21.0 binaries. The corpus has three stable-ID records: `rupee` = `₨` (U+20A8), `letters` = `Rs` (U+0052 U+0073), and `zero` = `0` (U+0030). All nine ordered comparisons were completed and passed finite-model consistency checks on both sides.
 
-## Verified runtime identities
+## Recorded runtimes
 
 The saved experiment uses official **darwin-arm64** archives:
 
@@ -51,10 +51,11 @@ The [ICU 76 release notes](https://unicode-org.github.io/icu/download/76.html) d
 
 ## Reproduce from official binaries
 
-From the repository root:
+The runtime downloader uses safe tar extraction filters. Use Python 3.10.12+,
+3.11.4+ or 3.12+, then run from the repository root:
 
 ```sh
-uv sync --locked --python 3.12
+uv sync --locked --python 3.10
 uv run python scripts/reproduce_case.py \
   --runtime-dir /tmp/collationdelta-node \
   --output /tmp/collationdelta-evidence
@@ -62,7 +63,7 @@ uv run python scripts/reproduce_case.py \
 
 This explicit experiment downloads two pinned archives, verifies their SHA-256, extracts the binaries, checks actual metadata, captures twice per runtime, evaluates both controls, compares the saved files offline, and runs the application demonstration. Its exit code is 0 when all assertions pass; the generated upgrade report itself has status `DRIFT` (a direct CLI compare returns 1).
 
-Download pins are included for macOS arm64 and Linux arm64/x64. The committed captures were generated on macOS arm64. The same experiment passed on Linux arm64; its [compact summary](../evidence/node-upgrade/linux-experiment.json) records Linux archive identities and actual application outputs. Linux x64 pins were not executed locally. This script is independent of the normal unit suite, does not publish anything, and does not install or change system runtimes. It writes only the chosen runtime/evidence directories. Use a disposable output directory when keeping the committed evidence unchanged.
+Download pins are included for macOS arm64 and Linux arm64/x64. The committed captures were generated on macOS arm64. A Linux arm64 experiment is also available; its [compact summary](../evidence/node-upgrade/linux-experiment.json) records Linux archive identities and actual application outputs. Linux x64 archive pins are available, but this dataset does not include a Linux x64 run. The script writes only the chosen runtime/evidence directories and does not change system installations. Keep reproduction output separate from the saved dataset.
 
 Reanalyse the committed captures without any Node executable:
 

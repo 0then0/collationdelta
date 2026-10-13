@@ -1,0 +1,143 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "adalheidur",
+        "value": "A\u00f0alhei\u00f0ur"
+      },
+      {
+        "id": "asta",
+        "value": "\u00c1sta"
+      },
+      {
+        "id": "bjarni",
+        "value": "Bjarni"
+      },
+      {
+        "id": "orn",
+        "value": "\u00d6rn"
+      },
+      {
+        "id": "ulfur",
+        "value": "\u00dalfur"
+      },
+      {
+        "id": "yrr",
+        "value": "\u00ddrr"
+      },
+      {
+        "id": "thordur",
+        "value": "\u00de\u00f3r\u00f0ur"
+      },
+      {
+        "id": "aevar",
+        "value": "\u00c6var"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": false,
+    "completed_comparisons": 0,
+    "consistency": "consistent_partial",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 64
+  },
+  "digest": "sha256:9f023a72cb4a5e5b5931df65e1f40f521dccd9e0dde7063ecb6faff53c0f7705",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1",
+      "name": "collationdelta-browser-intl",
+      "version": "0.2.0"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en-US",
+      "numeric": false,
+      "sensitivity": "variant",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "reason": "requested locale has no supported lookup match",
+    "results": [],
+    "runtime": {
+      "automation": {
+        "name": "playwright-core",
+        "version": "1.64.0"
+      },
+      "browser": {
+        "engine": "chromium",
+        "execution_context": {
+          "has_document": true,
+          "has_process": false,
+          "url": "about:blank"
+        },
+        "navigator_platform": "MacIntel",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "version": "156.0.8078.4"
+      },
+      "execution": {
+        "credential_store_flags": [
+          "--password-store=basic",
+          "--use-mock-keychain"
+        ],
+        "disposable_context": true,
+        "mode": "headless",
+        "transport": "local-cdp"
+      },
+      "host": {
+        "arch": "arm64",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "release": "24.6.0"
+      },
+      "intl": {
+        "canonical_locale": "is",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en-US",
+          "numeric": false,
+          "sensitivity": "variant",
+          "usage": "sort"
+        },
+        "supported_locales": []
+      },
+      "selection": {
+        "caller_labels": {},
+        "executable": "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+      }
+    },
+    "status": "unsupported"
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "is",
+    "options": {},
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/private/tmp/collationdelta-public-runtime/node-v24.21.0-darwin-arm64/bin/node",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/browser.mjs",
+      "--toolchain",
+      "/Users/user/Dev/collationdelta/scripts/browser-toolchain",
+      "--executable",
+      "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+    ],
+    "captured_at": "2026-10-13T15:09:23.887287+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "\nDevTools listening on ws://127.0.0.1:56290/devtools/browser/eb39cabc-2a49-4007-9171-20e36abfad05\n2026-10-13 18:09:23.403 Google Chrome for Testing Helper (Aperitif)[16361:148041] XPC error for connection com.apple.backupd.sandbox.xpc: Connection invalid\n[16359:148056:1013/180923.541758:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.542051:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.542262:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.542302:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.542408:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.542447:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.542550:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.542586:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.542732:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.542773:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.720264:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.720354:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.720616:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.720707:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.720984:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.721043:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.721514:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.721566:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148056:1013/180923.722038:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16359:148055:1013/180923.722101:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n2026-10-13 18:09:23.823 Google Chrome for Testing Helper (Aperitif)[16361:148041] XPC error for connection com.apple.backupd.sandbox.xpc: Connection invalid\n",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.2.0"
+  }
+}

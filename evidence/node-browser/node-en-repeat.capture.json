@@ -1,0 +1,497 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "adalheidur",
+        "value": "A\u00f0alhei\u00f0ur"
+      },
+      {
+        "id": "asta",
+        "value": "\u00c1sta"
+      },
+      {
+        "id": "bjarni",
+        "value": "Bjarni"
+      },
+      {
+        "id": "orn",
+        "value": "\u00d6rn"
+      },
+      {
+        "id": "ulfur",
+        "value": "\u00dalfur"
+      },
+      {
+        "id": "yrr",
+        "value": "\u00ddrr"
+      },
+      {
+        "id": "thordur",
+        "value": "\u00de\u00f3r\u00f0ur"
+      },
+      {
+        "id": "aevar",
+        "value": "\u00c6var"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 64,
+    "consistency": "verified",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:1f9153e842366647655cd5734b42bd22ffdc9ac56535831250a6ee1e53dfd985",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1",
+      "name": "collationdelta-intl",
+      "version": "0.2.0"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "variant",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "adalheidur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "adalheidur",
+        "right": "aevar",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "asta",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "aevar",
+        "right": "aevar",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "aevar",
+        "right": "asta",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "asta",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "asta",
+        "right": "asta",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "asta",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "bjarni",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "orn",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "orn",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "thordur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "thordur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "thordur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "yrr",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "ulfur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "ulfur",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "yrr",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "yrr",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "yrr",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "arch": "arm64",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "intl": {
+        "canonical_locale": "en",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en",
+          "numeric": false,
+          "sensitivity": "variant",
+          "usage": "sort"
+        },
+        "supported_locales": [
+          "en"
+        ]
+      },
+      "node": "v24.21.0",
+      "platform": "darwin",
+      "unicode": "17.0"
+    },
+    "status": "ok"
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {},
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/private/tmp/collationdelta-public-runtime/node-v24.21.0-darwin-arm64/bin/node",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/node.mjs"
+    ],
+    "captured_at": "2026-10-13T15:09:20.527028+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.2.0"
+  }
+}

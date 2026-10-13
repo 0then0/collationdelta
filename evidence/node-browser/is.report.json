@@ -1,0 +1,143 @@
+{
+  "complete": false,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "is",
+    "options": {},
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-browser-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:9f023a72cb4a5e5b5931df65e1f40f521dccd9e0dde7063ecb6faff53c0f7705",
+      "coverage": {
+        "complete": false,
+        "completed_comparisons": 0,
+        "consistency": "consistent_partial",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 64
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en-US",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": "requested locale has no supported lookup match",
+      "runtime": {
+        "automation": {
+          "name": "playwright-core",
+          "version": "1.64.0"
+        },
+        "browser": {
+          "engine": "chromium",
+          "execution_context": {
+            "has_document": true,
+            "has_process": false,
+            "url": "about:blank"
+          },
+          "navigator_platform": "MacIntel",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "version": "156.0.8078.4"
+        },
+        "execution": {
+          "credential_store_flags": [
+            "--password-store=basic",
+            "--use-mock-keychain"
+          ],
+          "disposable_context": true,
+          "mode": "headless",
+          "transport": "local-cdp"
+        },
+        "host": {
+          "arch": "arm64",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "release": "24.6.0"
+        },
+        "intl": {
+          "canonical_locale": "is",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en-US",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": []
+        },
+        "selection": {
+          "caller_labels": {},
+          "executable": "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+        }
+      },
+      "status": "unsupported"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:5184b396f80120e510563dc3f69eaeaf299c49f44dfe79eb92fef99fbd2be154",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "is",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "intl": {
+          "canonical_locale": "is",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "is",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "is"
+          ]
+        },
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    }
+  },
+  "status": "INCOMPLETE"
+}

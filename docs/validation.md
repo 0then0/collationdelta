@@ -1,95 +1,141 @@
-# v0.1 validation
+# Testing and supported environments
 
-This report records checks actually completed on **7 October 2026**. GitHub Actions is configured, but no hosted CI run was performed during this local validation.
+The core CLI requires Python 3.10+ on Linux or macOS and has no runtime dependencies.
+Node and browser runtimes are required only for their respective capture adapters.
+Windows adapter execution is unsupported.
 
-## Verified environments
+## Run the checks
 
-- macOS arm64: Python **3.12.15**, **3.13.15**, **3.14.8**, with Node **24.21.0 / ICU 78.3 / CLDR 48.0 / Unicode 17.0**. The full suite passed on each interpreter.
-- Linux arm64, Debian bookworm: Python **3.14.8**, with the official Node **24.21.0** binary and the same provider versions. The full suite passed against the installed wheel in a disposable container.
-- The Node adapter's **24 integration tests** also passed against official Node **18.20.8 / ICU 74.2 / CLDR 44.1 / Unicode 15.1** on macOS arm64.
-
-The full suite contains **118 tests**. Linux execution used the existing Python image `python@sha256:c8137f4c460908c8763f281c8f22c431eb5c538514ba9553fc3a89c06b7cfb88`. The checkout was mounted read-only. The wheel was installed without dependencies in a fresh environment; pytest was added only after exercising the installed CLI.
-
-## Core and adapter verification
-
-Ruff **0.16.10** was added as a development dependency. Python sources were formatted and lint findings corrected. The following checks passed after these changes:
+From the repository root:
 
 ```sh
+uv sync --locked --python 3.10
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked pytest -q
-# 118 passed on macOS arm64 / Python 3.12.15.
+uv build
 ```
 
-The configuration targets Python 3.12 and 100 columns, with rules `E`, `F`, `I`, `UP`, `B`, and `RUF`. `E501` is excluded so that long strings and comments do not conflict with the formatter's wrapping policy. CI runs both lint and format checks before tests.
+The suite checks Unicode preservation, input/protocol validation, complete and partial
+observations, equality/order changes, finite-order consistency, capture digests,
+deterministic reports, atomic output, process deadlines and offline comparison.
+Node integration runs when Node is installed. Unit tests do not download runtimes.
 
-The source environment was established with `uv sync --python 3.12`; later runs used the resulting lockfile:
+Ruff targets Python 3.10, uses a 100-column layout and checks errors, imports, compatible
+syntax and common bug patterns. Apply formatting with `uv run --locked ruff format .`.
+
+## Native browser integration
+
+Install the optional toolchain and choose an existing browser as described in the
+[browser guide](browser-capture.md), then run:
 
 ```sh
-uv run --locked pytest -q
-UV_PROJECT_ENVIRONMENT=/tmp/collationdelta-py313 uv sync --locked --python 3.13
-UV_PROJECT_ENVIRONMENT=/tmp/collationdelta-py313 uv run --locked pytest -q
-UV_PROJECT_ENVIRONMENT=/tmp/collationdelta-py314 uv sync --locked --python 3.14
-UV_PROJECT_ENVIRONMENT=/tmp/collationdelta-py314 uv run --locked pytest -q
-PATH=/tmp/collationdelta-node/node-v18.20.8-darwin-arm64/bin:$PATH \
-  uv run --locked pytest tests/test_node.py -q
+export COLLATIONDELTA_BROWSER_TOOLCHAIN="$PWD/scripts/browser-toolchain"
+export COLLATIONDELTA_BROWSER_EXECUTABLE='/absolute/path/to/browser'
+uv run --locked pytest -q tests/test_browser.py
 ```
 
-Local runs used equivalent `/private/tmp` directories and `UV_CACHE_DIR=/private/tmp/collationdelta-uv-cache` to keep disposable files outside the user-wide cache. Path choices do not affect the comparator.
+Both paths must identify the intended installations. Missing environment configuration
+produces visible skip reasons; invalid configured paths fail. A skipped test is not
+browser compatibility evidence.
 
-Tests protect drift types, unchanged relations, sorted-snapshot blind spots, distinct collation-equal values, duplicate values under different IDs, Unicode/control preservation, incompatible profiles/corpora, strict response mapping/types, unsupported configuration, malformed output, launch/crash/timeout/output limits, concurrent stdin/stderr I/O, descendant-held pipes, finite-order contradictions, corrupted or misleading captures, partial evidence without diagonals or reciprocal results, drift across opposite observed pair orientations with unchanged coverage and finding IDs, exact comparator signs for underflow/overflow magnitudes, private-use locale subtags and boundaries between Unicode and subsequent locale extensions, atomic writes under file-size and replacement failures, bounded allocations for large reports, stable finding IDs, deterministic reports, and offline operation. The maximum corpus exercises all **65,536** comparisons. Recomputing an invalid capture's digest cannot bypass consistency validation.
+Browser tests run comparisons in a real `about:blank` context. They check exact strings,
+all ordered pairs, repeated observations, strict option/extension handling, refusal of
+unsupported requests, actual runtime metadata and protocol stdout. Failure cases cover
+closed pages, stalled evaluation, pair exceptions, incomplete/invalid startup endpoints,
+launch/crash/output-limit failures,
+and preservation of an existing capture destination.
 
-## Packaging and offline operation
+Lifecycle tests inspect the supervisor process group and temporary browser profile
+path after success and failure. A lingering descendant exercises cleanup even after the
+main browser exits. Startup timeout before browser spawn is checked separately from
+cleanup of an active browser. Credential-storage tests inspect actual launch arguments
+before allowing the native executable to run. Toolchain-selection tests ensure an
+absent installation cannot fall back to packages in ancestor directories or `NODE_PATH`.
 
-`uv build` produced a wheel and source distribution. The wheel includes the Node adapter and has no `Requires-Dist` runtime dependencies. The source distribution includes documentation, examples, reproduction script, pins, saved evidence, lockfile, and tests.
+The [native browser workflow](../.github/workflows/browser.yml) explicitly installs its
+pinned toolchain/browser, requires real integration, runs the current-runtime experiment
+and exercises the adapter from a clean wheel. Release builds depend on this job.
 
-The wheel was installed with `uv pip install --no-deps` into a fresh macOS Python 3.12 environment. These commands ran from outside the checkout:
+## Runtime coverage
+
+The saved browser case uses:
+
+- macOS arm64, Google Chrome for Testing **156.0.8078.4**, headless;
+- Node **24.21.0**, ICU **78.3**, CLDR **48.0**, Unicode **17.0**;
+- playwright-core **1.64.0**.
+
+Local verification includes Python **3.10.22** and **3.12.15** on macOS arm64. The
+[core workflow](../.github/workflows/ci.yml) covers Linux and macOS with Python
+3.10–3.14; browser CI runs on macOS with Python 3.10. CI configuration describes the
+checks to run, not a claim that every configured environment has been verified locally.
+
+The [Node upgrade example](case-study.md) also has saved Linux arm64 experiment
+metadata. That evidence concerns the Node case, not browser compatibility.
+
+Linux browser execution, macOS x64 browser builds, other engines/distributions and
+mobile browsers have not been validated locally. Firefox, Safari/WebKit and Edge are
+not supported by the reference browser adapter. Future Python/runtime versions need
+their own verification.
+
+## Saved evidence
+
+The ordinary suite reanalyzes [Node upgrade artifacts](../evidence/node-upgrade) and
+[Node/browser artifacts](../evidence/node-browser) without launching their recorded
+runtimes. It checks digests, complete report contents, repeat observations and expected
+supported/unsupported outcomes.
+
+For the browser case, supported `en` captures contain 64/64 comparisons and the report
+is `STABLE`. The browser's strict `is` response is unsupported with zero observations,
+known effective locale `en-US`, and an `INCOMPLETE` report. Missing results do not
+become equality or a complete drift report.
+
+The [reproduction instructions](browser-capture.md#saved-nodebrowser-case) describe
+pinned archive downloads, executable/input hashes, repeated captures and offline
+reanalysis. The separate archive downloader requires tar extraction data filters,
+available in Python 3.10.12+, 3.11.4+ and 3.12+. Normal CLI operations require Python 3.10+.
+
+## Packaging checks
+
+Build a wheel and source archive, check their metadata, then install the wheel without
+adding runtime dependencies:
 
 ```sh
-collationdelta --help
-collationdelta capture --corpus /path/to/examples/corpus.json \
-  --profile /path/to/examples/profile.json --output /tmp/installed.capture.json \
-  -- node "$(collationdelta node-adapter)"
-collationdelta compare /tmp/installed.capture.json /tmp/installed.capture.json \
-  --json-output /tmp/installed.report.json
+uv build
+uvx --from twine==6.2.0 twine check --strict dist/*
+uv venv /tmp/collationdelta-install --python 3.10
+uv pip install --no-deps --python /tmp/collationdelta-install/bin/python \
+  dist/collationdelta-0.2.0-py3-none-any.whl
+cli=/tmp/collationdelta-install/bin/collationdelta
+"$cli" --version
+"$cli" node-adapter
+"$cli" browser-adapter
+PATH='' "$cli" compare evidence/node-browser/node-en.capture.json \
+  evidence/node-browser/browser-en.capture.json
 ```
 
-All returned exit **0**: capture completed **9/9** comparisons and comparison returned `STABLE`. The same installed-wheel workflow passed on Linux.
+The last command returns `STABLE` without resolving Node or browser executables.
+Repeat with the `is` files to get exit 2, `INCOMPLETE`. The wheel bundles all three
+adapter modules and declares no `Requires-Dist` dependencies. The source archive
+includes examples, scripts, pins, evidence, documentation and tests, while excluding
+`node_modules`.
 
-Offline analysis used `PATH=/nonexistent`, the absolute installed CLI path, and the saved old/new capture paths. It returned exit **1**, `DRIFT`, **2 findings**, and wrote the full JSON report. No Node executable could be resolved through PATH. A unit test also compares a baseline whose recorded adapter path does not exist.
+To check the installed browser adapter, install its npm toolchain separately and run
+`capture` using the adapter path printed by the installed CLI. The ordinary wheel and
+Node adapter remain usable without that toolchain. Neither wheel installation nor
+capture downloads a browser.
 
-## Release packaging and publishing configuration
+Workflow syntax can be checked with `actionlint .github/workflows/*.yml`. Publishing
+credentials and OIDC permissions are covered in the [release guide](releasing.md).
 
-The v0.1.0 distributions passed `uvx --from twine==6.2.0 twine check --strict dist/*`. Package metadata includes repository/documentation/issue/changelog URLs and the Apache-2.0 license file. All README links and the project image use absolute HTTPS URLs. The source distribution includes the changelog, release guide, and publishing workflow.
+## Interpretation limits
 
-Both workflows passed actionlint **1.7.7**. The publishing workflow's version guard accepted `v0.1.0` and rejected `v0.1` and `v0.2.0`. The rebuilt wheel passed a fresh Python 3.12 installation, version check, real Node capture, same-runtime control, and offline comparison against the saved golden report. The full **118-test** suite and Ruff checks passed after the packaging changes.
+Finite-corpus stability is not universal Unicode stability. Version strings, user agents,
+caller labels and capture digests are not proof of runtime authenticity. Executable
+hashes do not identify every linked library or locale-data file. Browser ICU, CLDR and
+Unicode versions are not inferred from its version number.
 
-These checks validate local artifacts and workflow structure. PyPI authentication and upload require the repository environment and Trusted Publisher setup described in the [release guide](releasing.md); an actual publishing run was not performed during these checks.
-
-## Historical experiment
-
-```sh
-uv run --locked python scripts/reproduce_case.py \
-  --runtime-dir /tmp/collationdelta-node --output /tmp/collationdelta-evidence
-```
-
-The experiment passed on **macOS arm64 and Linux arm64**, using official pinned archives. Actual Node, ICU, CLDR, and Unicode versions matched the pins. All nine comparisons completed in every capture. Both platforms produced the same two stable finding IDs:
-
-- Equality merge for `letters` / `rupee`: +1 → 0.
-- Order reversal for `rupee` / `zero`: -1 → +1.
-
-Each runtime was captured twice and its normalized observations matched on repeat. Both controls returned `STABLE`. Deserialized old/new capture comparison returned `DRIFT`. Sorted output remained `["₨", "Rs"]`; the demonstration application's adjacent-equality deduplication changed `["₨", "Rs"]` to `["₨"]`.
-
-Complete compact macOS evidence is in [evidence/node-upgrade](../evidence/node-upgrade). The [Linux experiment summary](../evidence/node-upgrade/linux-experiment.json) records official Linux archive hashes and actual application outputs. These are separate binary artifacts with the same verified runtime/provider versions, not interchangeable checksum claims.
-
-## Architecture and tradeoffs
-
-The implementation separates strict formats, bounded subprocess transport, finite-model validation, capture/report evidence, and argparse CLI. The Python core uses only the standard library. A single-batch protocol keeps adapters small, at the cost of rejecting truncated stdout rather than recovering results after a process crash. Valid partial responses are saved and reported with exit 2.
-
-Union-find constructs equality components; a strict-order graph validates the finite total preorder. Partial captures check only known constraints and cannot produce `STABLE`. Captures store relation signs instead of sort keys. Reports preserve the comparator's equality and never add a bytewise tiebreaker.
-
-## Limits of verification
-
-Support is verified for the environments listed above. **Linux x64, macOS x64, Linux Python 3.12/3.13, other provider builds, and hosted CI execution were not validated locally.** CI targets Linux/macOS with Python 3.12–3.14. Windows adapter execution is unsupported. `requires-python >=3.12` is an interpreter requirement, not a claim that every future version has been tested.
-
-Finite-corpus stability is not universal Unicode stability. Custom adapter metadata is self-reported and the content digest is not runtime authentication. The whole-Node experiment does not isolate ICU alone, demonstrate a production incident, or establish SQL/database-index behavior. v0.1 ends at local capture and offline drift reporting; it does not manage runtimes, publish packages, modify databases, or accept a new baseline automatically.
+Whole-group SIGKILL can leave an inert temporary profile directory because adapter
+cleanup cannot run after SIGKILL. The process cleanup guarantee applies to the tested
+native executable and descendants that retain the supervisor group. Arbitrary wrappers
+which detach processes are outside that guarantee.

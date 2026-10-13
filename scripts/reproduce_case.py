@@ -21,7 +21,19 @@ from collationdelta.formats import DeltaError, dump, load, require
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def file_sha256(path):
+    checksum = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            checksum.update(chunk)
+    return checksum.hexdigest()
+
+
 def obtain(version, pin, cache):
+    require(
+        hasattr(tarfile, "data_filter"),
+        "runtime archive extraction requires tarfile data filters (Python 3.10.12+, 3.11.4+ or 3.12+)",
+    )
     system = {"Darwin": "darwin", "Linux": "linux"}.get(platform.system())
     arch = {"arm64": "arm64", "aarch64": "arm64", "x86_64": "x64"}.get(platform.machine())
     suffix = "tar.gz" if system == "darwin" else "tar.xz"
@@ -43,8 +55,7 @@ def obtain(version, pin, cache):
             temporary.replace(archive)
         finally:
             temporary.unlink(missing_ok=True)
-    with archive.open("rb") as stream:
-        checksum = hashlib.file_digest(stream, "sha256").hexdigest()
+    checksum = file_sha256(archive)
     require(checksum == pin["archives"][target], f"archive checksum mismatch: {archive}")
     # Extract each verified archive again: never trust a previously altered tree.
     with tarfile.open(archive) as packed:

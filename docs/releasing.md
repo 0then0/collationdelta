@@ -1,27 +1,34 @@
-# Releasing CollationDelta
+# Release maintenance
 
-The package version is **0.1.0**, and its release tag is **v0.1.0**. Publication uses GitHub Actions OIDC and PyPI Trusted Publishing, without a stored PyPI API token.
+Version tags trigger the release workflow. It validates the source, builds the wheel
+and source archive, creates or updates the matching GitHub Release, and publishes the
+same distributions to PyPI through Trusted Publishing.
 
-## One-time configuration
+A normal branch push runs CI only. It does not publish a package or create a release.
 
-Create the `pypi` environment under [repository Settings → Environments](https://github.com/0then0/collationdelta/settings/environments). Restrict deployment to release tags such as `v*`; use required reviewers when appropriate for the repository's maintainers.
+## Publisher configuration
 
-For the first publication, add a pending publisher under [PyPI account publishing settings](https://pypi.org/manage/account/publishing/):
+The PyPI project must authorize this GitHub Trusted Publisher:
 
-- **PyPI Project Name:** `collationdelta`
-- **Owner:** `0then0`
-- **Repository name:** `collationdelta`
-- **Workflow name:** `release.yml`
-- **Environment name:** `pypi`
+- repository: `0then0/collationdelta`;
+- workflow: `.github/workflows/release.yml`;
+- environment: `pypi`.
 
-Workflow name is the filename, without `.github/workflows/`; it is not the workflow's display name. The environment name must match the publishing job exactly. A pending publisher creates the project on the first successful upload and does not reserve the project name beforehand. See the [PyPI pending publisher guide](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/).
+Configure the repository's `pypi` environment with the intended tag restrictions and
+required reviewers. Only the publishing job receives `id-token: write`; GitHub Release
+creation uses a separate job with `contents: write`. No stored PyPI API token is needed.
 
-## Prepare and validate
+For a first publication, PyPI supports a
+[pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/).
+For an existing project, manage its Trusted Publishers in the project's PyPI settings.
 
-Keep `pyproject.toml` and `src/collationdelta/__init__.py` versions equal. Update the changelog and record relevant validation results before creating a release.
+## Validate a release
+
+Keep versions in `pyproject.toml` and `src/collationdelta/__init__.py` equal. Add the
+matching `## VERSION` changelog entry and update documentation when behavior changes.
 
 ```sh
-uv sync --locked --python 3.12
+uv sync --locked --python 3.10
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked pytest -q
@@ -29,26 +36,51 @@ uv build
 uvx --from twine==6.2.0 twine check --strict dist/*
 ```
 
-Use a fresh checkout or an empty build output directory so that `dist/` contains only the intended wheel and source archive. Twine is an isolated release-check tool, not a runtime or project dependency.
+Use a clean checkout or an empty build output directory so `dist/` contains only the
+intended distributions. Twine is an isolated release-check tool, not a project runtime
+dependency. Run [browser integration](validation.md#native-browser-integration) with
+explicitly installed tools; skipped browser tests do not qualify as release evidence.
 
-Commit and push the prepared files, then wait for CI to pass. Push a version tag on the prepared commit to start the release without a browser or a personal API token:
+Check a clean wheel installation, Node capture, optional browser capture and offline
+comparison. The wheel must have no Python runtime dependencies, and the source archive
+must exclude `node_modules`. The [testing guide](validation.md#packaging-checks) contains
+commands for these checks.
+
+## Publish a version tag
+
+Commit and push the release changes, then wait for both core and native browser CI to
+pass. For version 0.2.0:
 
 ```sh
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.2.0
+git push origin v0.2.0
 ```
 
-`release.yml` creates a public GitHub Release from the matching changelog entry, attaches the checked distributions, and publishes to PyPI. Creating a release with a matching tag through [GitHub Releases](https://github.com/0then0/collationdelta/releases/new) is also supported; draft and prerelease events do not publish. GitHub Release creation uses the workflow's `GITHUB_TOKEN`, whose generated events do not trigger another release workflow run.
+The workflow verifies the tag against both version declarations and requires the
+Linux/macOS Python matrix and native Chromium job before building. The build step
+uses Python 3.12 for its `tomllib` version guard; this does not change the installed
+CLI's Python 3.10 minimum.
 
-## Publication
+A published non-prerelease GitHub Release with a matching version tag also triggers
+the workflow. Draft and prerelease events do not publish. Releases created using the
+workflow's `GITHUB_TOKEN` do not trigger a second publishing run.
 
-The workflow reruns the Linux/macOS Python matrix, verifies the tag against both version declarations, builds and checks distributions, creates or finds the GitHub Release and attaches its artifacts in a job with `contents: write`, then uploads the same artifacts in a separate `pypi` environment job. Only that job receives `id-token: write`. Approve the environment deployment if required by its settings.
+GitHub Release creation reads notes from the matching changelog entry and attaches the
+checked distributions. PyPI receives those same artifacts in the `pypi` environment.
+Approve that deployment if the environment requires review.
 
-Verify the workflow result, uploaded files, and version on [PyPI](https://pypi.org/project/collationdelta/). Then install the published version in a clean environment:
+## Verify publication
+
+Inspect the workflow result, GitHub Release assets and
+[PyPI release files](https://pypi.org/project/collationdelta/), then install the released
+version in a fresh environment:
 
 ```sh
-pip install collationdelta==0.1.0
+pip install collationdelta==0.2.0
 collationdelta --version
 ```
 
-PyPI release files cannot be replaced. If publication partially succeeds, inspect the uploaded files before retrying; the workflow deliberately does not silently skip existing files. Fix a faulty published release with a new version rather than moving the old tag or overwriting its artifacts.
+PyPI release files cannot be replaced. If publication partially succeeds, inspect which
+files were uploaded before retrying; the workflow does not silently skip existing
+files. Correct a faulty published release with a new version instead of moving the
+old tag or overwriting artifacts.

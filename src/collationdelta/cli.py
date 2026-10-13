@@ -1,4 +1,4 @@
-"""Command line entry point. Exit codes are part of the v0.1 public contract."""
+"""Command line entry point. Capture and comparison share stable exit codes."""
 
 import argparse
 import json
@@ -45,14 +45,16 @@ def parser():
     diff.add_argument("--json-output", help="also save the full versioned JSON report")
     diff.add_argument("--limit", type=int, default=20, help="maximum findings in human output only")
     commands.add_parser("node-adapter", help="print the bundled Intl.Collator adapter path")
+    commands.add_parser("browser-adapter", help="print the optional Chromium adapter path")
     return root
 
 
 def main(argv=None):
     try:
         args = parser().parse_args(argv)
-        if args.command == "node-adapter":
-            print(Path(__file__).parent / "adapters" / "node.mjs")
+        if args.command in ("node-adapter", "browser-adapter"):
+            name = "node.mjs" if args.command == "node-adapter" else "browser.mjs"
+            print(Path(__file__).parent / "adapters" / name)
             return 0
         if args.command == "capture":
             adapter = args.adapter[1:] if args.adapter[:1] == ["--"] else args.adapter

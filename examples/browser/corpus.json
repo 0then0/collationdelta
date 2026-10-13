@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "entries": [
+    { "id": "adalheidur", "value": "Aðalheiður" },
+    { "id": "asta", "value": "Ásta" },
+    { "id": "bjarni", "value": "Bjarni" },
+    { "id": "orn", "value": "Örn" },
+    { "id": "ulfur", "value": "Úlfur" },
+    { "id": "yrr", "value": "Ýrr" },
+    { "id": "thordur", "value": "Þórður" },
+    { "id": "aevar", "value": "Ævar" }
+  ]
+}

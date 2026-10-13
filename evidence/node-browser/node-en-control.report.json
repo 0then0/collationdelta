@@ -1,0 +1,117 @@
+{
+  "complete": true,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {},
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:1f9153e842366647655cd5734b42bd22ffdc9ac56535831250a6ee1e53dfd985",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        },
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:1012ed41aa4ff460cc7081a7c9b631aef1b1bdf4539623da6ee80a2568b3a229",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "arch": "arm64",
+        "cldr": "48.0",
+        "icu": "78.3",
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        },
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "unicode": "17.0"
+      },
+      "status": "ok"
+    }
+  },
+  "status": "STABLE"
+}

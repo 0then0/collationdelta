@@ -1,0 +1,529 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "adalheidur",
+        "value": "A\u00f0alhei\u00f0ur"
+      },
+      {
+        "id": "asta",
+        "value": "\u00c1sta"
+      },
+      {
+        "id": "bjarni",
+        "value": "Bjarni"
+      },
+      {
+        "id": "orn",
+        "value": "\u00d6rn"
+      },
+      {
+        "id": "ulfur",
+        "value": "\u00dalfur"
+      },
+      {
+        "id": "yrr",
+        "value": "\u00ddrr"
+      },
+      {
+        "id": "thordur",
+        "value": "\u00de\u00f3r\u00f0ur"
+      },
+      {
+        "id": "aevar",
+        "value": "\u00c6var"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 64,
+    "consistency": "verified",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:80ca245f9b5bc2b790647867923e800da04ab0f8a90656974e084f402ca0f445",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1",
+      "name": "collationdelta-browser-intl",
+      "version": "0.2.0"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "variant",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "adalheidur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "adalheidur",
+        "right": "aevar",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "asta",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "adalheidur",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "aevar",
+        "right": "aevar",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "aevar",
+        "right": "asta",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "aevar",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "asta",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "asta",
+        "right": "asta",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "asta",
+        "right": "bjarni",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "asta",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "bjarni",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "bjarni",
+        "right": "orn",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "bjarni",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "orn",
+        "right": "orn",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "orn",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "ulfur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "orn",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "thordur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "thordur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "thordur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "thordur",
+        "right": "yrr",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "ulfur",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "ulfur",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "ulfur",
+        "right": "yrr",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "yrr",
+        "right": "adalheidur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "aevar",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "asta",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "bjarni",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "orn",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "thordur",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "yrr",
+        "right": "ulfur",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "yrr",
+        "right": "yrr",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "automation": {
+        "name": "playwright-core",
+        "version": "1.64.0"
+      },
+      "browser": {
+        "engine": "chromium",
+        "execution_context": {
+          "has_document": true,
+          "has_process": false,
+          "url": "about:blank"
+        },
+        "navigator_platform": "MacIntel",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "version": "156.0.8078.4"
+      },
+      "execution": {
+        "credential_store_flags": [
+          "--password-store=basic",
+          "--use-mock-keychain"
+        ],
+        "disposable_context": true,
+        "mode": "headless",
+        "transport": "local-cdp"
+      },
+      "host": {
+        "arch": "arm64",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "release": "24.6.0"
+      },
+      "intl": {
+        "canonical_locale": "en",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en",
+          "numeric": false,
+          "sensitivity": "variant",
+          "usage": "sort"
+        },
+        "supported_locales": [
+          "en"
+        ]
+      },
+      "selection": {
+        "caller_labels": {},
+        "executable": "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+      }
+    },
+    "status": "ok"
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {},
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/private/tmp/collationdelta-public-runtime/node-v24.21.0-darwin-arm64/bin/node",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/browser.mjs",
+      "--toolchain",
+      "/Users/user/Dev/collationdelta/scripts/browser-toolchain",
+      "--executable",
+      "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+    ],
+    "captured_at": "2026-10-13T15:09:22.951286+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "\nDevTools listening on ws://127.0.0.1:56266/devtools/browser/cf712771-e888-4be4-a029-9959745144b2\n2026-10-13 18:09:22.428 Google Chrome for Testing Helper (Aperitif)[16337:147721] XPC error for connection com.apple.backupd.sandbox.xpc: Connection invalid\n[16335:147736:1013/180922.568072:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.568293:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.568529:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.568575:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.568681:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.568718:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.568834:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.568949:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.569074:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.569118:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.747851:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.747916:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.748072:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.748114:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.748232:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.748280:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.748398:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.748471:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147736:1013/180922.748583:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n[16335:147735:1013/180922.748628:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670\n2026-10-13 18:09:22.884 Google Chrome for Testing Helper (Aperitif)[16337:147717] XPC error for connection com.apple.backupd.sandbox.xpc: Connection invalid\n",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.2.0"
+  }
+}

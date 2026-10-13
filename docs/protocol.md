@@ -72,7 +72,27 @@ Supported option values:
 - `usage`: `sort`, `search`.
 - `collation`: a string accepted and actually resolved by the installed Intl provider.
 
-`localeMatcher` is fixed to `lookup`, not configurable in v0.1. Supported locale matching is checked before construction. The adapter accepts canonical locale spelling and normal lookup negotiation; it does not require literal requested/resolved equality. Explicit `collation` or locale `co` requests must resolve to the requested collation. Explicit options override Unicode extensions. The recognized `kn` and `kf` requests must also resolve; other locale extensions are outside this adapter contract. The Unicode extension ends at the next singleton introducing another locale extension. Private-use subtags following `-x-` are not interpreted as Unicode extension requests. An unavailable locale, invalid/unknown option, unsupported collation, or ignored supported request becomes `unsupported` with a reason and any known resolved options, never a silently substituted valid capture.
+`localeMatcher` is fixed to `lookup`, not configurable in this contract. Supported locale matching is checked and resolved settings are observed by construction; an unsupported locale never produces comparisons. The adapter accepts canonical locale spelling and normal lookup negotiation; it does not require literal requested/resolved equality. Explicit `collation` or locale `co` requests must resolve to the requested collation. Explicit options override Unicode extensions. The recognized `kn` and `kf` requests must also resolve; other locale extensions are outside this adapter contract. The Unicode extension ends at the next singleton introducing another locale extension. Private-use subtags following `-x-` are not interpreted as Unicode extension requests. An unavailable locale, invalid/unknown option, unsupported collation, or ignored supported request becomes `unsupported` with a reason and any known resolved options, never a silently substituted valid capture.
+
+## Browser reference adapter
+
+`collationdelta browser-adapter` locates the optional Chromium script. Node and
+browser share one self-contained `intl.mjs` evaluator with identical strict option
+validation, negotiation and pair failure behavior. The browser evaluates it through
+structured Playwright arguments in `about:blank`. Core schemas remain version 1.
+
+Both adapters add `runtime.intl` with `canonical_locale`, `supported_locales` (the
+lookup `supportedLocalesOf` result), and `resolved_options`. Unknown information is
+null. Unsupported locale responses retain resolved options when construction is
+possible but always have empty results. Browser runtime metadata uses the existing
+containers to separate browser, automation, host, selected executable/caller labels,
+and execution mode. No browser ICU/CLDR/Unicode versions are inferred.
+
+The browser adapter loads Playwright only from the selected installation prefix and
+uses isolated credential storage in its temporary profile. See
+[browser-capture.md](browser-capture.md) for optional installation,
+executable selection, supported environment, additional adapter limits, process-group
+cleanup, provenance and the pinned acceptance case.
 
 ## Custom application adapter
 
@@ -91,7 +111,7 @@ A capture contains `format_version: 1`, original `corpus`, `requested` profile, 
 
 `run` records `argv`, `cwd`, `platform`, `captured_at` (UTC ISO timestamp), `tool_version`, `timeout_seconds`, `stdout_limit_bytes`, `stderr_limit_bytes`, and decoded `stderr`. Non-UTF-8 diagnostics use replacement characters; protocol output itself requires strict UTF-8.
 
-The digest is `sha256:` plus lowercase hexadecimal SHA-256 over the entire capture object with only `digest` removed, serialized using Python `json.dumps(ensure_ascii=True, sort_keys=True, separators=(",", ":"), allow_nan=False)` and ASCII encoding. There is no trailing newline in the hashed bytes. Object order/indentation do not matter; array order does. This definition is intended for Python v0.1 producers, not as a general cross-language JSON canonicalization standard. The digest is not authentication.
+The digest is `sha256:` plus lowercase hexadecimal SHA-256 over the entire capture object with only `digest` removed, serialized using Python `json.dumps(ensure_ascii=True, sort_keys=True, separators=(",", ":"), allow_nan=False)` and ASCII encoding. There is no trailing newline in the hashed bytes. Object order/indentation do not matter; array order does. This is the capture format v1 canonicalization rule, not a general cross-language JSON canonicalization standard. The digest is not authentication.
 
 ## Report format v1
 

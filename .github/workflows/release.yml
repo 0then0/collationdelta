@@ -18,8 +18,12 @@ jobs:
     if: startsWith(github.event.release.tag_name || github.ref_name, 'v') && !github.event.release.prerelease
     uses: ./.github/workflows/ci.yml
 
+  browser-checks:
+    if: startsWith(github.event.release.tag_name || github.ref_name, 'v') && !github.event.release.prerelease
+    uses: ./.github/workflows/browser.yml
+
   build:
-    needs: checks
+    needs: [checks, browser-checks]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

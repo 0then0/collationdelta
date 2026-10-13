@@ -28,7 +28,7 @@ def capture(entries_document, requested, argv, **limits):
             "argv": list(argv),
             "cwd": os.getcwd(),
             "platform": platform.platform(),
-            "captured_at": datetime.datetime.now(datetime.UTC).isoformat(),
+            "captured_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "tool_version": __version__,
             "timeout_seconds": limits.get("timeout", 30.0),
             "stdout_limit_bytes": limits.get("stdout_limit", 16 * 1024 * 1024),

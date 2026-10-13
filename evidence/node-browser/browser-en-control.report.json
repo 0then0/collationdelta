@@ -1,0 +1,173 @@
+{
+  "complete": true,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {},
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-browser-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:80ca245f9b5bc2b790647867923e800da04ab0f8a90656974e084f402ca0f445",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "automation": {
+          "name": "playwright-core",
+          "version": "1.64.0"
+        },
+        "browser": {
+          "engine": "chromium",
+          "execution_context": {
+            "has_document": true,
+            "has_process": false,
+            "url": "about:blank"
+          },
+          "navigator_platform": "MacIntel",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "version": "156.0.8078.4"
+        },
+        "execution": {
+          "credential_store_flags": [
+            "--password-store=basic",
+            "--use-mock-keychain"
+          ],
+          "disposable_context": true,
+          "mode": "headless",
+          "transport": "local-cdp"
+        },
+        "host": {
+          "arch": "arm64",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "release": "24.6.0"
+        },
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        },
+        "selection": {
+          "caller_labels": {},
+          "executable": "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+        }
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1",
+        "name": "collationdelta-browser-intl",
+        "version": "0.2.0"
+      },
+      "capture_digest": "sha256:2d0c2f36113ddccdf8c7c924cf5885e74bd25b200670a79c9cb93667a9752a15",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "variant",
+        "usage": "sort"
+      },
+      "reason": null,
+      "runtime": {
+        "automation": {
+          "name": "playwright-core",
+          "version": "1.64.0"
+        },
+        "browser": {
+          "engine": "chromium",
+          "execution_context": {
+            "has_document": true,
+            "has_process": false,
+            "url": "about:blank"
+          },
+          "navigator_platform": "MacIntel",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "version": "156.0.8078.4"
+        },
+        "execution": {
+          "credential_store_flags": [
+            "--password-store=basic",
+            "--use-mock-keychain"
+          ],
+          "disposable_context": true,
+          "mode": "headless",
+          "transport": "local-cdp"
+        },
+        "host": {
+          "arch": "arm64",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "release": "24.6.0"
+        },
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "variant",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        },
+        "selection": {
+          "caller_labels": {},
+          "executable": "/private/tmp/collationdelta-public-runtime/browser-156.0.8078.4/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+        }
+      },
+      "status": "ok"
+    }
+  },
+  "status": "STABLE"
+}
