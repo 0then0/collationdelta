@@ -23,6 +23,8 @@ Native browser capture with portable evidence and strict locale support.
   missing toolchain installations without searching ancestor packages.
 - Check process cleanup even when timeout occurs before browser startup and wait for
   complete CDP endpoint data during native startup.
+- Preserve completed adapter results when macOS denies signalling a departed process
+  group; keep signalling errors visible for unfinished adapters and other platforms.
 - Support Python 3.10+; exercise Python 3.10–3.14 in core CI and Python 3.10 in native browser CI.
 - Keep capture/report/protocol formats, core comparison, corpus limits, atomic output
   and exit codes unchanged. No application fallback contract is added.

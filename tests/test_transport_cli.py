@@ -3,6 +3,7 @@ import sys
 
 import pytest
 
+from collationdelta import transport
 from collationdelta.cli import main
 from collationdelta.evidence import capture
 from collationdelta.formats import DeltaError, dump
@@ -47,6 +48,40 @@ def test_descendant_held_pipes_are_bounded():
     code = "import os,time;pid=os.fork();time.sleep(10) if pid==0 else None"
     with pytest.raises(DeltaError, match="timeout"):
         run(command(code), b"{}", timeout=0.2)
+
+
+@pytest.mark.parametrize("exit_code", [0, 7])
+def test_macos_departed_group_permission_error_preserves_result(monkeypatch, exit_code):
+    def departed_group(pid, sig):
+        raise PermissionError("departed group")
+
+    monkeypatch.setattr(transport.sys, "platform", "darwin")
+    monkeypatch.setattr(transport.os, "killpg", departed_group)
+    code = f"import sys;sys.stdin.read();print('result');sys.exit({exit_code})"
+    if exit_code:
+        with pytest.raises(DeltaError, match="exited 7"):
+            run(command(code), b"{}")
+    else:
+        assert run(command(code), b"{}") == (b"result\n", b"")
+
+
+@pytest.mark.parametrize("platform,timed_out", [("linux", False), ("darwin", True)])
+def test_group_permission_error_is_not_ignored_for_other_cases(monkeypatch, platform, timed_out):
+    killpg = transport.os.killpg
+
+    def denied_group(pid, sig):
+        # Actually terminate the test process so the simulated denial cannot leak it.
+        try:
+            killpg(pid, sig)
+        except ProcessLookupError:
+            pass
+        raise PermissionError("denied group")
+
+    monkeypatch.setattr(transport.sys, "platform", platform)
+    monkeypatch.setattr(transport.os, "killpg", denied_group)
+    code = "import time;time.sleep(10)" if timed_out else "import sys;sys.stdin.read()"
+    with pytest.raises(PermissionError, match="denied group"):
+        run(command(code), b"{}", timeout=0.2 if timed_out else 10)
 
 
 def test_argv_without_shell_interpolation(tmp_path):

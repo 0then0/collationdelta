@@ -4,6 +4,7 @@ import os
 import selectors
 import signal
 import subprocess
+import sys
 import time
 
 from .formats import DeltaError, require
@@ -32,6 +33,7 @@ def run(argv, request, *, timeout=30.0, stdout_limit=16 * 1024 * 1024, stderr_li
     limits = {"stdout": stdout_limit, "stderr": stderr_limit}
     deadline = time.monotonic() + timeout
     offset = 0
+    completed = False
     try:
         with selectors.DefaultSelector() as selector:
             for stream, label in (
@@ -77,6 +79,7 @@ def run(argv, request, *, timeout=30.0, stdout_limit=16 * 1024 * 1024, stderr_li
                 code = proc.wait(timeout=remaining)
             except subprocess.TimeoutExpired as exc:
                 raise DeltaError(f"adapter timeout after {timeout:g}s") from exc
+            completed = True
             if code != 0:
                 diagnostic = bytes(output["stderr"]).decode("utf-8", errors="replace")
                 raise DeltaError(f"adapter exited {code}; stderr={diagnostic!r}")
@@ -87,6 +90,11 @@ def run(argv, request, *, timeout=30.0, stdout_limit=16 * 1024 * 1024, stderr_li
             os.killpg(proc.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
+        except PermissionError:
+            # Darwin can deny signalling a departed group containing only zombies.
+            # Suppress this only after draining the pipes and reaping the adapter.
+            if sys.platform != "darwin" or not completed:
+                raise
         proc.wait()
         for stream in (proc.stdin, proc.stdout, proc.stderr):
             stream.close()
