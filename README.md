@@ -24,7 +24,7 @@ executable adapters can record an application's own comparator.
 
 ## Install
 
-This source version requires Python **3.10+** on Linux or macOS. Node is needed for
+CollationDelta 0.2 requires Python **3.10+** on Linux or macOS. Node is needed for
 Node capture; browser capture also requires an explicitly installed Chromium runtime
 and optional Playwright toolchain. Windows adapter execution is unsupported.
 
@@ -50,13 +50,12 @@ uv pip install --python /tmp/collationdelta-install/bin/python \
 ### Published releases
 
 ```sh
-pip install collationdelta
+pip install collationdelta==0.2.0
 collationdelta --version
 ```
 
-The installed version determines available features and Python requirements. The
-published v0.1.0 release requires Python 3.12+ and includes Node capture. Native browser
-capture and Python 3.10 support are available in the v0.2 source tree.
+Version 0.2.0 includes Node capture, optional native browser capture and Python 3.10
+support. The older 0.1.0 release requires Python 3.12+ and includes Node capture only.
 
 ## Capture and compare
 
