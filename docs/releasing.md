@@ -1,8 +1,9 @@
 # Release maintenance
 
-Version tags trigger the release workflow. It validates the source, builds the wheel
-and source archive, creates or updates the matching GitHub Release, and publishes the
-same distributions to PyPI through Trusted Publishing.
+Version tags trigger the release workflow. It validates the source, calls the core
+packaging job to build and check the wheel and source archive, creates or updates the
+matching GitHub Release, and publishes the same distributions to PyPI through Trusted
+Publishing.
 
 A normal branch push runs CI only. It does not publish a package or create a release.
 
@@ -56,10 +57,16 @@ git tag v0.2.0
 git push origin v0.2.0
 ```
 
-The workflow verifies the tag against both version declarations and requires the
-Linux/macOS Python matrix and native Chromium job before building. The build step
-uses Python 3.12 for its `tomllib` version guard; this does not change the installed
-CLI's Python 3.10 minimum.
+The workflow calls the core and native browser workflows once. The core matrix tests
+Python 3.10–3.14 on Linux and Python 3.10 and 3.14 on macOS. Ruff and packaging run in
+separate Linux jobs; the native Chromium job includes its installed-wheel check.
+Standalone core/browser workflows do not also run on tag pushes.
+
+After all checks pass, the workflow verifies the tag against both version declarations
+using Python 3.12 for its `tomllib` version guard. This does not change the installed
+CLI's Python 3.10 minimum. GitHub Release and PyPI publication use the checked
+`distributions` artifact from the core packaging job without rebuilding it. Release
+checks and publication are excluded from cancellation of outdated branch/PR runs.
 
 A published non-prerelease GitHub Release with a matching version tag also triggers
 the workflow. Draft and prerelease events do not publish. Releases created using the

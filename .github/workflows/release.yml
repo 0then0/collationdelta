@@ -22,7 +22,7 @@ jobs:
     if: startsWith(github.event.release.tag_name || github.ref_name, 'v') && !github.event.release.prerelease
     uses: ./.github/workflows/browser.yml
 
-  build:
+  validate-release:
     needs: [checks, browser-checks]
     runs-on: ubuntu-latest
     steps:
@@ -32,9 +32,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - uses: astral-sh/setup-uv@v6
-        with:
-          version: '0.12.23'
       - name: Validate release version
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
@@ -51,17 +48,9 @@ jobs:
           if project['name'] != 'collationdelta' or os.environ['RELEASE_TAG'] != f'v{version}' or runtime_version != version:
               raise SystemExit('Release tag, package name, and version metadata must agree')
           PY
-      - run: uv lock --check
-      - run: uv build
-      - run: uvx --from twine==6.2.0 twine check --strict dist/*
-      - uses: actions/upload-artifact@v4
-        with:
-          name: distributions
-          path: dist/*
-          if-no-files-found: error
 
   github-release:
-    needs: build
+    needs: validate-release
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -123,7 +112,7 @@ jobs:
           PY
 
   publish:
-    needs: [build, github-release]
+    needs: [validate-release, github-release]
     runs-on: ubuntu-latest
     environment:
       name: pypi

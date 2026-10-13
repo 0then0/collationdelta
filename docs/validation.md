@@ -66,9 +66,21 @@ The saved browser case uses:
 - playwright-core **1.64.0**.
 
 Local verification includes Python **3.10.22** and **3.12.15** on macOS arm64. The
-[core workflow](../.github/workflows/ci.yml) covers Linux and macOS with Python
-3.10–3.14; browser CI runs on macOS with Python 3.10. CI configuration describes the
-checks to run, not a claim that every configured environment has been verified locally.
+[core workflow](../.github/workflows/ci.yml) tests Python 3.10–3.14 on Linux and Python
+3.10 and 3.14 on macOS; browser CI runs on macOS with Python 3.10. CI configuration
+describes the checks to run, not a claim that every configured environment has been
+verified locally.
+
+Ruff runs in one Linux job. A separate Linux packaging job checks the lockfile, builds
+the wheel and source archive, runs strict Twine validation and exercises an installed
+wheel on Python 3.10, including Node capture and offline comparison with an empty
+`PATH`. It uploads the checked distributions for use by the release workflow. The
+native browser job independently checks its adapter from an installed wheel on macOS.
+
+Branch pushes and pull requests run core and browser workflows. New commits cancel
+outdated runs for the same branch or pull request. Version tags run these workflows
+only through the release workflow, without separate duplicate runs; release checks
+and publication are not cancelled by newer commits on a branch.
 
 The [Node upgrade example](case-study.md) also has saved Linux arm64 experiment
 metadata. That evidence concerns the Node case, not browser compatibility.
