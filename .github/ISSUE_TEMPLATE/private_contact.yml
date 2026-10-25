@@ -1,0 +1,19 @@
+name: Private maintainer contact request
+description: Request a private channel without publishing security or conduct details.
+title: Private maintainer contact requested
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public. Do not add incident details, exploit steps, personal data or attachments.
+        This form only requests a private contact channel; submit the report after a channel is agreed.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Contact category
+      options:
+        - Security
+        - Code of Conduct
+        - Other private matter
+    validations:
+      required: true

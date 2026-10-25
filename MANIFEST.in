@@ -1,9 +1,11 @@
 include uv.lock
 include CHANGELOG.md
+include CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md
+include .editorconfig .gitattributes .gitignore
 recursive-include docs *.md *.svg
 recursive-include examples *.json *.py *.mjs
 recursive-include scripts *.py *.json
 recursive-include evidence *.json *.txt *.md
 recursive-include tests *.py
-recursive-include .github *.yml
+recursive-include .github *.yml *.md
 prune scripts/browser-toolchain/node_modules

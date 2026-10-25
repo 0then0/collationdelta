@@ -1,0 +1,23 @@
+# Normalize text files without treating binary assets as text.
+* text=auto eol=lf
+
+*.py text
+*.mjs text
+*.json text
+*.toml text
+*.lock text
+*.md text
+*.txt text
+*.yml text
+*.yaml text
+*.svg text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.whl binary

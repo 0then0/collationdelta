@@ -25,6 +25,7 @@ jobs:
   validate-release:
     needs: [checks, browser-checks]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,6 +53,7 @@ jobs:
   github-release:
     needs: validate-release
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
     steps:
@@ -114,6 +116,7 @@ jobs:
   publish:
     needs: [validate-release, github-release]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: pypi
       url: https://pypi.org/project/collationdelta/

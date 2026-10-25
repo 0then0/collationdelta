@@ -5,6 +5,7 @@
 **Detect string ordering and equality changes before a runtime upgrade.**
 
 [![PyPI](https://img.shields.io/pypi/v/collationdelta)](https://pypi.org/project/collationdelta/)
+[![CI](https://github.com/0then0/collationdelta/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/0then0/collationdelta/actions/workflows/ci.yml)
 ![Python requirement](https://img.shields.io/badge/requires-Python%203.10%2B-blue)
 ![Runtime dependencies](https://img.shields.io/badge/core-runtime%20dependencies%200-green)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
@@ -197,6 +198,19 @@ Unicode/CLDR specifications. CollationDelta uses your saved comparator baseline.
 [glibc-unicode-sorting](https://github.com/ardentperf/glibc-unicode-sorting) studies
 sorting changes through PostgreSQL over large datasets. CollationDelta uses a bounded
 user corpus and explicit equality/order witnesses.
+
+## Contributing and support
+
+Read the [contributing guide](https://github.com/0then0/collationdelta/blob/main/CONTRIBUTING.md)
+for setup, coding conventions, tests and pull requests. Use the
+[issue forms](https://github.com/0then0/collationdelta/issues/new/choose) for reproducible
+bugs and feature requests. Use synthetic inputs rather than private application captures.
+
+Participation follows the
+[Code of Conduct](https://github.com/0then0/collationdelta/blob/main/CODE_OF_CONDUCT.md).
+For suspected vulnerabilities, follow the
+[security policy](https://github.com/0then0/collationdelta/blob/main/SECURITY.md) before
+sharing details publicly.
 
 ## Development
 

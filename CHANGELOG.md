@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Add contributor, conduct and security policies, GitHub issue forms and a pull request
+  template; link participation and reporting guidance from the README.
+- Define UTF-8/LF editor and Git text settings and replace the generic ignore template
+  with rules for Python, uv, the optional browser toolchain and local credentials.
+- Run lint and packaging once, reduce the macOS test matrix to Python 3.10 and 3.14,
+  reuse checked release archives and avoid duplicate checks on version tags.
+
 ## 0.2.0
 
 Native browser capture with portable evidence and strict locale support.
