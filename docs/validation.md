@@ -151,3 +151,43 @@ Whole-group SIGKILL can leave an inert temporary profile directory because adapt
 cleanup cannot run after SIGKILL. The process cleanup guarantee applies to the tested
 native executable and descendants that retain the supervisor group. Arbitrary wrappers
 which detach processes are outside that guarantee.
+
+## Open-browser page milestone (unreleased)
+
+The static page was exercised on macOS arm64 in actual Chromium 156.0.8078.4 and
+Firefox 157.0, operated by the existing playwright-core 1.64.0 toolchain. The
+production build was served at `/collationdelta/`. Tests downloaded exports through
+the page, used strict CLI import, then ran ordinary offline comparisons with empty
+PATH/NODE_PATH. Both runtimes and Node v26.13.0 produced STABLE complete controls and
+cross-runtime reports on the small `en` example. Unsupported `zz-ZZ` exports imported
+successfully with exit 2 and compared as INCOMPLETE. See
+[the saved case](../evidence/browser-page/README.md) for raw artifacts, commands,
+versions and network audit.
+
+Input/CLI checks cover versions, unknown/missing fields, coverage types/counts,
+contradictory pair relations, signs, duplicate JSON keys, problematic Unicode,
+file limits, v2 digest corruption, unchanged output on error and v1 compatibility.
+Browser checks cover example and real file inputs, downloads, exact strings,
+unsupported/error states, repeated captures, cancellation, in-flight input changes,
+keyboard focus and 360px reflow. A controlled stalled Worker checks responsiveness
+and the 15-second timeout without exporting invented runtime results. Context-level
+network requests were all same-origin static GETs with no bodies. Screenshots at
+1100px and 360px were visually inspected; they do not prove physical-device support.
+
+Safari 26.6.1 WebDriver was attempted and refused because Allow remote automation is
+disabled. Settings were not changed. Safari, iOS/Android devices and Playwright WebKit
+were not verified. The [browser guide](browser-capture.md) gives a manual device flow.
+
+Run the integration through the existing pytest toolchain after explicit browser
+installation (tests never download browsers):
+
+```sh
+PLAYWRIGHT_BROWSERS_PATH=/tmp/cd-page-browsers \
+COLLATIONDELTA_BROWSER_TOOLCHAIN="$PWD/scripts/browser-toolchain" \
+COLLATIONDELTA_PAGE_BROWSERS=chromium,firefox \
+  uv run --locked pytest -q tests/test_browser_import.py
+```
+
+Without these opt-in variables only the real page integration is skipped; offline
+browser import and saved evidence tests always run. The manual Pages workflow runs
+both browser integrations before artifact upload; publication is separately gated.

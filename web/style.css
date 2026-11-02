@@ -1,0 +1,174 @@
+:root {
+    color-scheme: light dark;
+    font:
+        16px/1.55 system-ui,
+        sans-serif;
+    color: #192633;
+    background: #f6f8fa;
+    --line: #c7d0d9;
+    --accent: #155a82;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+main {
+    max-width: 850px;
+    margin: auto;
+    padding: 2rem 1.25rem;
+}
+header {
+    border-top: 5px solid var(--accent);
+    padding: 1rem 0;
+}
+.brand {
+    font-weight: 650;
+    color: var(--accent);
+}
+h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    margin: 1rem 0;
+}
+h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+}
+h3 {
+    font-size: 1rem;
+}
+section {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+}
+p {
+    max-width: 75ch;
+}
+.files {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+label {
+    display: block;
+    font-weight: 650;
+    min-width: 0;
+}
+input {
+    display: block;
+    font: inherit;
+    width: 100%;
+    min-width: 0;
+    margin: 0.5rem 0;
+    padding: 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+input[type='file'] {
+    overflow: hidden;
+}
+input::file-selector-button {
+    font: inherit;
+    padding: 0.4rem;
+}
+.label {
+    margin-top: 1.25rem;
+}
+label span {
+    font-weight: 400;
+}
+button,
+.download {
+    font: inherit;
+    font-weight: 650;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    background: transparent;
+    cursor: pointer;
+}
+#capture,
+.download {
+    color: white;
+    background: var(--accent);
+}
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+:focus-visible {
+    outline: 3px solid #b34d00;
+    outline-offset: 3px;
+}
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+pre {
+    font:
+        0.875rem/1.6 ui-monospace,
+        monospace;
+    padding: 1rem;
+    background: #eaf0f4;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border-left: 3px solid var(--line);
+}
+#status {
+    padding: 0.85rem;
+    border-left: 4px solid var(--line);
+    overflow-wrap: anywhere;
+}
+#status[data-state='success'] {
+    border-color: #187346;
+}
+#status[data-state='error'] {
+    border-color: #b52b21;
+}
+#status[data-state='unsupported'] {
+    border-color: #a56300;
+}
+.download {
+    display: inline-block;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+[hidden] {
+    display: none !important;
+}
+footer {
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+}
+@media (max-width: 550px) {
+    .files {
+        grid-template-columns: 1fr;
+    }
+    main {
+        padding: 1rem;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: #e0e7ed;
+        background: #111b24;
+        --line: #495c6b;
+        --accent: #86c7ed;
+    }
+    pre {
+        background: #1c2a35;
+    }
+    #capture,
+    .download {
+        color: #111b24;
+    }
+    :focus-visible {
+        outline-color: #ffb86c;
+    }
+}

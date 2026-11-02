@@ -7,6 +7,7 @@ import os
 import platform
 
 from . import __version__
+from .browser_import import validate_export, validate_provenance
 from .formats import canonical, corpus, decode, digest, fields, profile, require
 from .observations import response
 from .transport import run
@@ -40,12 +41,22 @@ def capture(entries_document, requested, argv, **limits):
 
 
 def validate_capture(value):
-    fields(
-        value, ("format_version", "corpus", "requested", "observation", "coverage", "run", "digest")
-    )
+    version = value.get("format_version") if isinstance(value, dict) else None
     require(
-        type(value["format_version"]) is int and value["format_version"] == 1,
+        type(version) is int and version in (1, 2),
         "unsupported capture format version",
+    )
+    fields(
+        value,
+        (
+            "format_version",
+            "corpus",
+            "requested",
+            "observation",
+            "coverage",
+            "run" if version == 1 else "provenance",
+            "digest",
+        ),
     )
     require(
         isinstance(value["digest"], str)
@@ -61,6 +72,17 @@ def validate_capture(value):
         canonical(coverage) == canonical(value["coverage"]),
         "capture coverage does not match observations",
     )
+    if version == 2:
+        provenance = value["provenance"]
+        validate_provenance(provenance)
+        validate_export(
+            {
+                "browser_export_version": provenance["browser_export_version"],
+                "metadata": provenance["metadata"],
+                **{key: value[key] for key in ("corpus", "requested", "observation", "coverage")},
+            }
+        )
+        return relations
     info = value["run"]
     fields(
         info,
@@ -115,6 +137,9 @@ def compare(old, new):
         }
         for label, side in (("old", old), ("new", new))
     }
+    for label, side in (("old", old), ("new", new)):
+        if side["format_version"] == 2:
+            sides[label]["provenance"] = side["provenance"]
     findings = []
     records_by_id = {}
 

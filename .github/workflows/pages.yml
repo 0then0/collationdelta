@@ -1,0 +1,60 @@
+name: Browser capture page
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Publish the checked artifact to GitHub Pages'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.21.0'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --locked --python 3.10
+      - run: npm ci --ignore-scripts --prefix scripts/browser-toolchain
+      - name: Install test browsers into disposable CI storage
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/page-browsers
+        run: node scripts/browser-toolchain/node_modules/playwright-core/cli.js install --with-deps chromium firefox
+      - name: Check browser export, strict import and offline compare under project subpath
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/page-browsers
+          COLLATIONDELTA_BROWSER_TOOLCHAIN: ${{ github.workspace }}/scripts/browser-toolchain
+          COLLATIONDELTA_PAGE_BROWSERS: chromium,firefox
+        run: uv run --locked pytest -q tests/test_browser_import.py
+      - run: python scripts/build_browser_page.py --output build/browser-page
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/browser-page
+  deploy:
+    if: inputs.deploy
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deployment

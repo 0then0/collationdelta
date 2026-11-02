@@ -1,0 +1,499 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "empty",
+        "value": ""
+      },
+      {
+        "id": "upper",
+        "value": "A"
+      },
+      {
+        "id": "lower",
+        "value": "a"
+      },
+      {
+        "id": "combining",
+        "value": "e\u0301"
+      },
+      {
+        "id": "composed",
+        "value": "\u00e9"
+      },
+      {
+        "id": "supplementary",
+        "value": "\ud83d\ude00"
+      },
+      {
+        "id": "control",
+        "value": "\u0000\n"
+      },
+      {
+        "id": "duplicate",
+        "value": "A"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 64,
+    "consistency": "verified",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:870a7160fcac5a1e8b83473c074038c8946790cdc7c1b77733385848874c430d",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1",
+      "name": "collationdelta-intl",
+      "version": "0.2.0"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "base",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "combining",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "lower",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "lower",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "control",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "control",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "control",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "control",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "empty",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "control",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "empty",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "empty",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "supplementary",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "supplementary",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "arch": "arm64",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "intl": {
+        "canonical_locale": "en",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en",
+          "numeric": false,
+          "sensitivity": "base",
+          "usage": "sort"
+        },
+        "supported_locales": [
+          "en"
+        ]
+      },
+      "node": "v26.13.0",
+      "platform": "darwin",
+      "unicode": "17.0"
+    },
+    "status": "ok"
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/Users/user/.local/state/fnm_multishells/47863_1793648417809/bin/node",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/node.mjs"
+    ],
+    "captured_at": "2026-11-02T19:45:28.390830+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.2.0"
+  }
+}

@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Add a responsive static browser capture page with one example, exact JSON inputs,
+  native Dedicated Worker Intl observations, bounded time/output, cancellation and
+  explicit unsupported exports. Build from the shared evaluator without duplicating it.
+- Add strict offline `import-browser` for browser export v1, capture v2 with versioned
+  browser/importer provenance, existing relation validation and atomic output. Preserve
+  capture v1 reading, executable capture output and historical evidence.
+- Verify Chromium/Firefox page download → import → compare, unsupported controls,
+  Unicode, input/run invalidation, narrow layout and static-only network requests;
+  save a reproducible acceptance case. Document unverified Safari/mobile devices.
+- Prepare a manual GitHub Pages workflow with project-subpath acceptance and a separate
+  opt-in deploy job. No site or release is published.
+
 - Add contributor, conduct and security policies, GitHub issue forms and a pull request
   template; link participation and reporting guidance from the README.
 - Define UTF-8/LF editor and Git text settings and replace the generic ignore template

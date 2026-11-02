@@ -1,0 +1,500 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "empty",
+        "value": ""
+      },
+      {
+        "id": "upper",
+        "value": "A"
+      },
+      {
+        "id": "lower",
+        "value": "a"
+      },
+      {
+        "id": "combining",
+        "value": "e\u0301"
+      },
+      {
+        "id": "composed",
+        "value": "\u00e9"
+      },
+      {
+        "id": "supplementary",
+        "value": "\ud83d\ude00"
+      },
+      {
+        "id": "control",
+        "value": "\u0000\n"
+      },
+      {
+        "id": "duplicate",
+        "value": "A"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 64,
+    "consistency": "verified",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:2c4c98423fd95567e6f9dbdfcaef9b1866e4b4a91447f051ca2725d99364f5c1",
+  "format_version": 2,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "base",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "combining",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "lower",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "lower",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "control",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "control",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "control",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "control",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "empty",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "control",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "empty",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "empty",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "supplementary",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "lower",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "supplementary",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "lower",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "intl": {
+        "canonical_locale": "en",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en",
+          "numeric": false,
+          "sensitivity": "base",
+          "usage": "sort"
+        },
+        "supported_locales": [
+          "en"
+        ]
+      }
+    },
+    "status": "ok"
+  },
+  "provenance": {
+    "browser_export_version": 1,
+    "importer": {
+      "imported_at": "2026-11-02T19:45:28.625333+00:00",
+      "tool_version": "0.2.0"
+    },
+    "kind": "browser-export",
+    "metadata": {
+      "caller_labels": {
+        "label": ""
+      },
+      "captured_at": "2026-11-02T19:45:24.655Z",
+      "execution_context": {
+        "has_document": false,
+        "has_process": false,
+        "kind": "dedicated-worker"
+      },
+      "navigator_platform": "MacIntel",
+      "page_version": 1,
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+    },
+    "version": 1
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,500 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "\ud83d\ude00\u0000",
+        "value": ""
+      },
+      {
+        "id": "upper",
+        "value": "<img src=\"https://invalid.example/private\" onerror=\"throw Error(1)\">"
+      },
+      {
+        "id": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "value": "a"
+      },
+      {
+        "id": "combining",
+        "value": "e\u0301"
+      },
+      {
+        "id": "composed",
+        "value": "\u00e9"
+      },
+      {
+        "id": "supplementary",
+        "value": "\ud83d\ude00"
+      },
+      {
+        "id": "control",
+        "value": "\u0000\n"
+      },
+      {
+        "id": "duplicate",
+        "value": "A"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 64,
+    "consistency": "verified",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:1987bac1653b396153982623d2afd6401c142028aefc8fc5601b76fe5d9157fd",
+  "format_version": 2,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en",
+      "numeric": false,
+      "sensitivity": "base",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "combining",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "combining",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "combining",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "combining",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "composed",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "composed",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "control",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "control",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "control",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "control",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "duplicate",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "duplicate",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "duplicate",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "duplicate",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "supplementary",
+        "right": "supplementary",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "supplementary",
+        "right": "upper",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "supplementary",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "control",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper",
+        "right": "upper",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "combining",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "control",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "duplicate",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "supplementary",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "upper",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "\ud83d\ude00\u0000",
+        "right": "\ud83d\ude00\u0000",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "intl": {
+        "canonical_locale": "en",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en",
+          "numeric": false,
+          "sensitivity": "base",
+          "usage": "sort"
+        },
+        "supported_locales": [
+          "en"
+        ]
+      }
+    },
+    "status": "ok"
+  },
+  "provenance": {
+    "browser_export_version": 1,
+    "importer": {
+      "imported_at": "2026-11-02T19:45:28.845061+00:00",
+      "tool_version": "0.2.0"
+    },
+    "kind": "browser-export",
+    "metadata": {
+      "caller_labels": {
+        "label": ""
+      },
+      "captured_at": "2026-11-02T19:45:27.402Z",
+      "execution_context": {
+        "has_document": false,
+        "has_process": false,
+        "kind": "dedicated-worker"
+      },
+      "navigator_platform": "MacIntel",
+      "page_version": 1,
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+    },
+    "version": 1
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  }
+}

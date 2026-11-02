@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'none'; script-src 'self'; style-src 'self'; worker-src 'self'; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'"
+        />
+        <title>Browser capture · CollationDelta</title>
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./style.css" />
+        <script type="module" src="./app.mjs"></script>
+    </head>
+    <body>
+        <main>
+            <header>
+                <p class="brand">CollationDelta / browser capture</p>
+                <h1>Observe this browser’s collation.</h1>
+                <p>
+                    Load your exact strings and requested settings, capture all ordered pairs, then
+                    download the observations for offline analysis in the CLI.
+                </p>
+            </header>
+            <section aria-labelledby="inputs-heading">
+                <h2 id="inputs-heading">1. Choose inputs</h2>
+                <p>
+                    Corpus v1 and profile v1 JSON. Each file: at most 1 MiB. Corpus: 1–256 strings.
+                    Values and duplicates are preserved exactly.
+                </p>
+                <div class="files">
+                    <label
+                        >Corpus JSON<input id="corpus" type="file" accept=".json,application/json"
+                    /></label>
+                    <label
+                        >Profile JSON<input
+                            id="profile"
+                            type="file"
+                            accept=".json,application/json"
+                    /></label>
+                </div>
+                <button id="example" type="button">Load small example</button>
+                <label class="label"
+                    >Optional runtime label <span>(your claim, not browser detection)</span
+                    ><input
+                        id="label"
+                        type="text"
+                        maxlength="256"
+                        autocomplete="off"
+                        placeholder="e.g. Safari on my phone"
+                /></label>
+                <pre id="summary">Choose both files or load the example.</pre>
+            </section>
+            <section aria-labelledby="capture-heading">
+                <h2 id="capture-heading">2. Capture observations</h2>
+                <p>
+                    Uses the native <code>Intl.Collator</code> in a Dedicated Worker of this open
+                    browser, with <code>localeMatcher: lookup</code>. This is a Worker observation,
+                    not a Window observation. No fallback comparisons.
+                </p>
+                <p>
+                    15-second operation deadline; 16 MiB export limit. Timeout or cancellation
+                    discards the result. Keep this tab active during capture.
+                </p>
+                <div class="actions">
+                    <button id="capture" type="button" disabled>Run capture</button
+                    ><button id="cancel" type="button" disabled>Cancel</button>
+                </div>
+                <p id="status" role="status" aria-live="polite">No capture available.</p>
+                <div id="details" hidden>
+                    <h3>Observed settings and coverage</h3>
+                    <p>The CLI independently checks relation consistency during import.</p>
+                    <pre id="metadata"></pre>
+                </div>
+                <a
+                    id="download"
+                    class="download"
+                    download="collationdelta.browser-export.json"
+                    hidden
+                    >Download browser export JSON</a
+                >
+            </section>
+            <section aria-labelledby="import-heading">
+                <h2 id="import-heading">3. Import and compare offline</h2>
+                <pre>
+collationdelta import-browser collationdelta.browser-export.json --output browser.capture.json
+collationdelta compare baseline.capture.json browser.capture.json</pre>
+                <p>
+                    Use the same corpus and requested profile on both sides. Unsupported exports
+                    remain incomplete, including when compared with themselves.
+                </p>
+            </section>
+            <footer>
+                <p>
+                    Your files and observations stay in this page’s memory until downloaded. They
+                    are not uploaded. Loading this page and its static resources uses the network.
+                    No analytics, CDN, accounts or backend.
+                </p>
+                <p>
+                    Metadata records user agent and platform as browser-reported strings. Engine,
+                    browser version, ICU/CLDR and architecture are unknown; labels and metadata do
+                    not authenticate a runtime.
+                </p>
+            </footer>
+            <noscript>This capture page requires JavaScript and module Worker support.</noscript>
+        </main>
+    </body>
+</html>

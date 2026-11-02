@@ -81,3 +81,33 @@ def test_saved_native_browser_case_completely_offline():
         manifest["installation_provenance"]["browser"]["archive_sha256"]
         == "987d2f8499c87d21676f78178550cfcbfb1bb53786821e2cff46c5a7e99b58be"
     )
+
+
+def test_saved_page_exports_imports_and_controls():
+    from collationdelta.browser_import import import_browser
+    from collationdelta.evidence import validate_capture
+
+    root = EVIDENCE.parent / "browser-page"
+    node = load(root / "node.capture.json")
+    assert compare(node, load(root / "node-repeat.capture.json"))["status"] == "STABLE"
+    for browser in ("chromium", "firefox"):
+        original = load(root / f"{browser}.browser-export.json")
+        saved = load(root / f"{browser}.capture.json")
+        validate_capture(saved)
+        assert saved["format_version"] == 2 and "run" not in saved
+        assert saved["corpus"] == load(root.parents[1] / "examples/browser-page/corpus.json")
+        assert saved["provenance"]["metadata"] == original["metadata"]
+        assert compare(saved, import_browser(original))["status"] == "STABLE"
+        assert compare(node, saved) == load(root / f"{browser}-node.report.json")
+        assert compare(saved, load(root / f"{browser}-repeat.capture.json")) == load(
+            root / f"{browser}-control.report.json"
+        )
+        unsupported = load(root / f"{browser}-unsupported.capture.json")
+        assert compare(unsupported, unsupported)["status"] == "INCOMPLETE"
+        assert unsupported["coverage"]["completed_comparisons"] == 0
+    audit = load(root / "browser-checks.json")
+    for runtime in audit["runtimes"].values():
+        assert runtime["version"]
+        for request in runtime["network"]:
+            assert request["method"] == "GET" and request["body"] is None
+            assert request["url"].startswith("http://127.0.0.1:")

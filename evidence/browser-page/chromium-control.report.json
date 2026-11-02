@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:2f82b340adfd36b9522a96825ba96a2c29db83bb73e35586dad7c701e3f93b96",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.532113+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:06.955Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+        },
+        "version": 1
+      },
+      "reason": null,
+      "runtime": {
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        }
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:18a39daa778ece798a56024737fcfffaf085a36934678b52966e9dadbe6c7527",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.501183+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:06.667Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+        },
+        "version": 1
+      },
+      "reason": null,
+      "runtime": {
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        }
+      },
+      "status": "ok"
+    }
+  },
+  "status": "STABLE"
+}

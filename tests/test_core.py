@@ -130,7 +130,7 @@ def test_digest_and_coverage_not_trusted(make_capture):
     with pytest.raises(DeltaError, match="coverage"):
         validate_capture(seal(new))
     new["coverage"] = old["coverage"]
-    new["format_version"] = 2
+    new["format_version"] = 3
     with pytest.raises(DeltaError, match="format version"):
         validate_capture(seal(new))
 

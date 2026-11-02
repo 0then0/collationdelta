@@ -1,4 +1,152 @@
-# Native browser capture
+# Browser capture
+
+## Capture in an open browser (unreleased milestone)
+
+Use the static page when the runtime is the browser you can open: Chromium, Firefox,
+Safari or a mobile browser with module Worker support. No Node, Playwright, backend
+or browser executable selection is needed by the page. This path observes native
+`Intl.Collator` in that browser's **Dedicated Worker**, not its Window realm. It checks
+the Worker context and records it in every export. If your application depends on
+Window-specific modifications, use an application adapter for that context instead.
+The shared `src/collationdelta/adapters/intl.mjs` remains the only Intl evaluator.
+
+Use the executable adapter below for automated Chromium runs, explicit executable
+selection, CDP metadata and process supervision. Neither path infers browser ICU/CLDR
+versions. The page is a capture tool; offline comparison stays in Python.
+
+### Build and open locally
+
+From the source checkout, using the existing environment:
+
+```sh
+uv run --locked python scripts/build_browser_page.py --output build/preview/collationdelta
+uv run --locked python -m http.server 8000 --bind 127.0.0.1 --directory build/preview
+```
+
+Open `http://127.0.0.1:8000/collationdelta/`. Serve HTTP rather than opening
+`index.html` as a file: module Workers need a same-origin HTTP(S) environment. The
+build copies five static files plus the actual shared evaluator; it installs nothing.
+All asset URLs are relative and work at the project subpath or server root. The build
+directory is disposable and excluded from Git.
+
+1. Choose corpus/profile JSON, or select **Load small example**. The example is also
+   saved in `examples/browser-page/` for a matching CLI baseline.
+2. Review string count, locale and options. An optional runtime label is your claim.
+3. Select **Run capture**. Review completion, coverage, supported locales, resolved
+   settings and any unsupported reason or errors. Download browser export JSON.
+4. Import with this source build and compare against a capture of the same inputs:
+
+```sh
+uv run --locked collationdelta import-browser collationdelta.browser-export.json \
+  --output /tmp/browser.capture.json
+uv run --locked collationdelta capture \
+  --corpus examples/browser-page/corpus.json --profile examples/browser-page/profile.json \
+  --output /tmp/node.capture.json -- node "$(uv run --locked collationdelta node-adapter)"
+uv run --locked collationdelta compare /tmp/node.capture.json /tmp/browser.capture.json \
+  --json-output /tmp/browser.report.json
+```
+
+An unsupported export is valid evidence: import saves it and returns 2; compare stays
+`INCOMPLETE`, including a refusal compared with itself. Invalid evidence returns 3 and
+preserves an existing destination. The released 0.2.0 CLI does not include
+`import-browser`; these commands require the updated source build. Existing executable
+captures stay v1; imported browser captures are v2 and compare with v1 offline.
+
+### Limits, provenance and privacy
+
+Exact scalar strings, empty strings, controls, supplementary/combining characters and
+duplicate values are preserved. Unpaired surrogates, duplicate JSON keys, invalid UTF-8
+and unsafe numeric underflow/overflow are rejected. There are 1–256 entries and all
+ordered pairs, including diagonals. Each input file is limited to 1 MiB; exports to
+16 MiB. Conservative preflight sizing may require shorter IDs or a smaller corpus.
+The Worker has a 15-second deadline while the tab is active. Cancellation, timeout,
+input/label changes and errors revoke previous downloads and discard unfinished work.
+Background-tab timer throttling can delay deadline delivery; the Worker is terminated
+when the page handles it. A suspended tab cannot promise wall-clock scheduling.
+
+Exports record Worker-observed user agent/platform, page version/time, context and
+separate caller labels. Engine, executable, browser version, architecture and locale
+data versions remain unknown. Automation acceptance versions are recorded separately
+by the test harness, not attributed to the page. Importer version/time are also
+separate. Version strings, user agent and labels cannot authenticate a runtime. Export
+v1 has no digest; import applies the existing Python canonicalization/digest after
+validation. A digest checks integrity, not origin. See [the format specification](protocol.md#browser-export-v1).
+
+No file contents or comparisons are uploaded, no analytics or remote fonts/CDNs are
+used, and there is no backend. Page and module/style loading still use the network.
+A restrictive CSP disallows connections and form submissions. Acceptance records
+context network requests and asserts that all are same-origin static GETs with no
+request bodies; saved evidence includes the request audit. Native browser background
+services outside this page are not covered by that audit. User strings are rendered
+as text, never inserted as HTML. Downloaded exports/captures include the original
+strings and should be shared accordingly.
+
+### Browser checks and manual device check
+
+The page acceptance was run on macOS arm64 in real **Chrome for Testing 156.0.8078.4**
+and **Firefox 157.0**, using Playwright-core 1.64.0 to operate the actual page. Both
+performed real Worker capture, file selection, download, strict import and offline
+compare. Desktop 1100px and narrow 360px layouts, keyboard focus, unsupported input,
+Unicode, cancellation, timeout and stale-result invalidation were checked. Narrow
+viewport emulation is not a physical-device test.
+
+Safari 26.6.1 is installed, but WebDriver refused a session because **Allow remote
+automation** is disabled; Safari acceptance was not completed and its settings were
+not changed. No actual iOS/Android device or Playwright WebKit acceptance was performed.
+WebKit automation, if later run, must be described as WebKit rather than Safari.
+
+For Safari or a physical phone: serve the built page on an accessible HTTP(S) host
+(or use Pages after an authorized deployment), open it in the target browser, choose
+the example, run capture and save JSON using the browser's download/share UI. Transfer
+the saved file to the CLI machine, run the import and baseline commands above, then
+compare. Capture twice for a same-runtime control. Record the browser/device version
+manually as a caller label and report the actual status; do not require DRIFT or
+assume a locale is supported.
+
+### Saved acceptance and reproduction
+
+[evidence/browser-page/](../evidence/browser-page/README.md) contains the small
+example, actual exports, imported captures, Node baseline/repeat, controls, offline
+reports, command manifest and network audit. Complete controls and cross-runtime
+results on this corpus are STABLE; unsupported controls are INCOMPLETE. These facts
+do not alter the historical 0.2.0 Node/browser experiment below.
+
+To reproduce with explicitly installed automation browsers:
+
+```sh
+# Only if the optional toolchain is not installed:
+npm ci --ignore-scripts --prefix scripts/browser-toolchain
+# Explicit browser installation, outside capture:
+PLAYWRIGHT_BROWSERS_PATH=/tmp/cd-page-browsers \
+  node scripts/browser-toolchain/node_modules/playwright-core/cli.js install chromium firefox
+PLAYWRIGHT_BROWSERS_PATH=/tmp/cd-page-browsers \
+  uv run --locked python scripts/reproduce_page_case.py --node "$(command -v node)" \
+  --toolchain "$PWD/scripts/browser-toolchain" --output /tmp/cd-page-evidence
+```
+
+The harness builds the production artifact, serves only its static resources at
+`/collationdelta/`, operates the real page and downloads files. Node drives automation;
+it never supplies browser comparison results. Stalled-Worker UI checks are explicitly
+controlled fixtures and are not saved as runtime observations. The Python harness
+then runs CLI import/compare, including offline comparison with empty PATH.
+
+### GitHub Pages preparation
+
+`.github/workflows/pages.yml` follows the repository's major-version action pin
+convention. It runs only via `workflow_dispatch`; `deploy` defaults to **false**. The
+build tests real Chromium/Firefox against the project subpath and uploads the static
+Pages artifact. It does not run on push or publish by default. Deployment is a separate
+job with `pages: write` and `id-token: write`, gated by an explicitly selected deploy
+input and the `github-pages` environment. Other jobs have only `contents: read`.
+
+After separate publication approval, select GitHub Actions as the Pages source,
+configure environment/branch protection and dispatch with deployment enabled. The
+artifact root is `build/browser-page`; Pages mounts it at `/collationdelta/`. Do not
+add an extra project directory inside the uploaded artifact. No domain or repository
+settings have been changed and no site has been published by this milestone.
+The workflow uses [GitHub's documented Pages actions and permissions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+## Executable Chromium adapter
 
 The optional browser adapter runs `Intl.Collator` inside a headless Chromium page and
 returns observations through the same executable protocol as the Node adapter. Its

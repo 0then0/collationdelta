@@ -1,0 +1,145 @@
+{
+  "complete": false,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "zz-ZZ",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:453c5840b3c08453d62d26ad005f586cd4bea6c2976443ffb30ec5c8a18dc738",
+      "coverage": {
+        "complete": false,
+        "completed_comparisons": 0,
+        "consistency": "consistent_partial",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 64
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en-US",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.813462+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:27.519Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+        },
+        "version": 1
+      },
+      "reason": "requested locale has no supported lookup match",
+      "runtime": {
+        "intl": {
+          "canonical_locale": "zz-ZZ",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en-US",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": []
+        }
+      },
+      "status": "unsupported"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:453c5840b3c08453d62d26ad005f586cd4bea6c2976443ffb30ec5c8a18dc738",
+      "coverage": {
+        "complete": false,
+        "completed_comparisons": 0,
+        "consistency": "consistent_partial",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 64
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en-US",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.813462+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:27.519Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+        },
+        "version": 1
+      },
+      "reason": "requested locale has no supported lookup match",
+      "runtime": {
+        "intl": {
+          "canonical_locale": "zz-ZZ",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en-US",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": []
+        }
+      },
+      "status": "unsupported"
+    }
+  },
+  "status": "INCOMPLETE"
+}

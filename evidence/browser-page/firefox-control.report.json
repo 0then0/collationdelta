@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "finding_count": 0,
+  "findings": [],
+  "report_version": 1,
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "en",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:5a000b5bf11b7588af6a0b6246182089e41e57975a72089c2e039df8d977496a",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.782793+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:27.268Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+        },
+        "version": 1
+      },
+      "reason": null,
+      "runtime": {
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        }
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "intl.collator.v1"
+      },
+      "capture_digest": "sha256:7bf50297e147fe6d228212388794bb982f3c42b715945a6b14f6491ae2a1a98a",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 64,
+        "consistency": "verified",
+        "entries": 8,
+        "expected_comparisons": 64,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "caseFirst": "false",
+        "collation": "default",
+        "ignorePunctuation": false,
+        "locale": "en",
+        "numeric": false,
+        "sensitivity": "base",
+        "usage": "sort"
+      },
+      "provenance": {
+        "browser_export_version": 1,
+        "importer": {
+          "imported_at": "2026-11-02T19:45:28.751499+00:00",
+          "tool_version": "0.2.0"
+        },
+        "kind": "browser-export",
+        "metadata": {
+          "caller_labels": {
+            "label": ""
+          },
+          "captured_at": "2026-11-02T19:45:26.922Z",
+          "execution_context": {
+            "has_document": false,
+            "has_process": false,
+            "kind": "dedicated-worker"
+          },
+          "navigator_platform": "MacIntel",
+          "page_version": 1,
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+        },
+        "version": 1
+      },
+      "reason": null,
+      "runtime": {
+        "intl": {
+          "canonical_locale": "en",
+          "resolved_options": {
+            "caseFirst": "false",
+            "collation": "default",
+            "ignorePunctuation": false,
+            "locale": "en",
+            "numeric": false,
+            "sensitivity": "base",
+            "usage": "sort"
+          },
+          "supported_locales": [
+            "en"
+          ]
+        }
+      },
+      "status": "ok"
+    }
+  },
+  "status": "STABLE"
+}

@@ -1,0 +1,114 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "\ud83d\ude00\u0000",
+        "value": ""
+      },
+      {
+        "id": "upper",
+        "value": "<img src=\"https://invalid.example/private\" onerror=\"throw Error(1)\">"
+      },
+      {
+        "id": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        "value": "a"
+      },
+      {
+        "id": "combining",
+        "value": "e\u0301"
+      },
+      {
+        "id": "composed",
+        "value": "\u00e9"
+      },
+      {
+        "id": "supplementary",
+        "value": "\ud83d\ude00"
+      },
+      {
+        "id": "control",
+        "value": "\u0000\n"
+      },
+      {
+        "id": "duplicate",
+        "value": "A"
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": false,
+    "completed_comparisons": 0,
+    "consistency": "consistent_partial",
+    "entries": 8,
+    "expected_comparisons": 64,
+    "failed_comparisons": 0,
+    "missing_comparisons": 64
+  },
+  "digest": "sha256:453c5840b3c08453d62d26ad005f586cd4bea6c2976443ffb30ec5c8a18dc738",
+  "format_version": 2,
+  "observation": {
+    "adapter": {
+      "contract": "intl.collator.v1"
+    },
+    "effective": {
+      "caseFirst": "false",
+      "collation": "default",
+      "ignorePunctuation": false,
+      "locale": "en-US",
+      "numeric": false,
+      "sensitivity": "base",
+      "usage": "sort"
+    },
+    "protocol_version": 1,
+    "reason": "requested locale has no supported lookup match",
+    "results": [],
+    "runtime": {
+      "intl": {
+        "canonical_locale": "zz-ZZ",
+        "resolved_options": {
+          "caseFirst": "false",
+          "collation": "default",
+          "ignorePunctuation": false,
+          "locale": "en-US",
+          "numeric": false,
+          "sensitivity": "base",
+          "usage": "sort"
+        },
+        "supported_locales": []
+      }
+    },
+    "status": "unsupported"
+  },
+  "provenance": {
+    "browser_export_version": 1,
+    "importer": {
+      "imported_at": "2026-11-02T19:45:28.813462+00:00",
+      "tool_version": "0.2.0"
+    },
+    "kind": "browser-export",
+    "metadata": {
+      "caller_labels": {
+        "label": ""
+      },
+      "captured_at": "2026-11-02T19:45:27.519Z",
+      "execution_context": {
+        "has_document": false,
+        "has_process": false,
+        "kind": "dedicated-worker"
+      },
+      "navigator_platform": "MacIntel",
+      "page_version": 1,
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:157.0) Gecko/20100101 Firefox/157.0"
+    },
+    "version": 1
+  },
+  "requested": {
+    "contract": "intl.collator.v1",
+    "locale": "zz-ZZ",
+    "options": {
+      "sensitivity": "base"
+    },
+    "version": 1
+  }
+}

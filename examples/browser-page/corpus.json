@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "empty",
+      "value": ""
+    },
+    {
+      "id": "upper",
+      "value": "A"
+    },
+    {
+      "id": "lower",
+      "value": "a"
+    },
+    {
+      "id": "combining",
+      "value": "e\u0301"
+    },
+    {
+      "id": "composed",
+      "value": "\u00e9"
+    },
+    {
+      "id": "supplementary",
+      "value": "\ud83d\ude00"
+    },
+    {
+      "id": "control",
+      "value": "\u0000\n"
+    },
+    {
+      "id": "duplicate",
+      "value": "A"
+    }
+  ]
+}

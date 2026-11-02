@@ -83,6 +83,32 @@ For native browser capture, see the
 `collationdelta browser-adapter` prints the bundled browser adapter path. Browser
 installation and executable selection are explicit; capture never downloads a browser.
 
+## Capture from an open browser (unreleased)
+
+The source build also includes a small static capture page. Open it in your browser,
+choose corpus/profile JSON (or the built-in example), run native `Intl.Collator` in a
+Dedicated Worker and download the observations. No browser installation or Node is
+needed on that device. Import and compare on the CLI machine:
+
+```sh
+uv run --locked collationdelta import-browser collationdelta.browser-export.json \
+  --output /tmp/browser.capture.json
+uv run --locked collationdelta compare /tmp/baseline.capture.json /tmp/browser.capture.json
+```
+
+Use the page for user-opened browsers and the executable adapter for automated
+Chromium/executable selection. [The browser guide](docs/browser-capture.md) covers
+local HTTP serving, Pages preparation, exact limits, provenance, privacy and manual
+Safari/mobile checks. Actual page acceptance passed in Chromium 156.0.8078.4 and
+Firefox 157.0. Safari and physical mobile devices are not yet verified. The page and
+its resources use the network; file contents/results are not uploaded.
+
+Browser export v1 becomes capture v2 with separate browser metadata, caller labels
+and importer metadata. Existing capture v1 files remain readable and comparable.
+Unsupported evidence stays INCOMPLETE; metadata and digests do not authenticate a
+runtime. This feature is local source work, not part of the published 0.2.0 release
+and not a published Pages site.
+
 ## Inputs
 
 Corpus JSON assigns a stable ID to each exact string:
@@ -168,8 +194,9 @@ every browser distribution. Newer builds may legitimately change locale support.
 ## Evidence and guarantees
 
 Captures embed the original corpus, requested profile, effective settings, runtime and
-adapter metadata, relation signs, explicit failures, coverage, invocation details,
-limits, diagnostics and a SHA-256 digest. Loading revalidates the digest, schema,
+adapter metadata, relation signs, explicit failures, coverage and a SHA-256 digest.
+Executable captures also record invocation details, limits and diagnostics; browser
+imports record separate page/caller/importer provenance. Loading revalidates the digest, schema,
 coverage and finite-order consistency.
 
 Compatible captures must have identical ID/value mappings and requested profiles,

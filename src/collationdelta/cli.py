@@ -6,8 +6,9 @@ import sys
 from pathlib import Path
 
 from . import __version__
+from .browser_import import EXPORT_LIMIT, import_browser
 from .evidence import capture, compare, coverage_text, human_report
-from .formats import DeltaError, dump, load, require
+from .formats import DeltaError, decode, dump, load, require
 
 
 class Parser(argparse.ArgumentParser):
@@ -38,6 +39,9 @@ def parser():
     cap.add_argument(
         "adapter", nargs=argparse.REMAINDER, help="adapter argv after --; executed without a shell"
     )
+    imp = commands.add_parser("import-browser", help="validate a browser-page export offline")
+    imp.add_argument("source", help="browser export JSON file")
+    imp.add_argument("--output", required=True, help="portable capture JSON destination")
     diff = commands.add_parser("compare", help="compare two captures completely offline")
     diff.add_argument("old")
     diff.add_argument("new")
@@ -56,16 +60,14 @@ def main(argv=None):
             name = "node.mjs" if args.command == "node-adapter" else "browser.mjs"
             print(Path(__file__).parent / "adapters" / name)
             return 0
-        if args.command == "capture":
-            adapter = args.adapter[1:] if args.adapter[:1] == ["--"] else args.adapter
-            value = capture(
-                load(args.corpus),
-                load(args.profile),
-                adapter,
-                timeout=args.timeout,
-                stdout_limit=args.stdout_limit,
-                stderr_limit=args.stderr_limit,
-            )
+        if args.command in ("capture", "import-browser"):
+            if args.command == "import-browser":
+                with Path(args.source).open("rb") as stream:
+                    data = stream.read(EXPORT_LIMIT + 1)
+                require(len(data) <= EXPORT_LIMIT, "browser export exceeds 16 MiB limit")
+                value = import_browser(decode(data))
+            else:
+                value = executable_capture(args)
             dump(args.output, value)
             print(
                 f"{'CAPTURED' if value['coverage']['complete'] else 'INCOMPLETE'} | {coverage_text(value['coverage'])}"
@@ -86,3 +88,15 @@ def main(argv=None):
     except (DeltaError, OSError, RecursionError) as exc:
         print(f"ERROR: {str(exc)!a}", file=sys.stderr)
         return 3
+
+
+def executable_capture(args):
+    adapter = args.adapter[1:] if args.adapter[:1] == ["--"] else args.adapter
+    return capture(
+        load(args.corpus),
+        load(args.profile),
+        adapter,
+        timeout=args.timeout,
+        stdout_limit=args.stdout_limit,
+        stderr_limit=args.stderr_limit,
+    )

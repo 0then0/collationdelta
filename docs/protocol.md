@@ -79,7 +79,8 @@ Supported option values:
 `collationdelta browser-adapter` locates the optional Chromium script. Node and
 browser share one self-contained `intl.mjs` evaluator with identical strict option
 validation, negotiation and pair failure behavior. The browser evaluates it through
-structured Playwright arguments in `about:blank`. Core schemas remain version 1.
+structured Playwright arguments in `about:blank`. Executable captures remain v1;
+user-opened page import uses the separately versioned formats below.
 
 Both adapters add `runtime.intl` with `canonical_locale`, `supported_locales` (the
 lookup `supportedLocalesOf` result), and `resolved_options`. Unknown information is
@@ -118,3 +119,96 @@ The digest is `sha256:` plus lowercase hexadecimal SHA-256 over the entire captu
 The root contains `report_version: 1`, `status`, `complete`, `requested`, `sides`, `finding_count`, and `findings`. Each side contains its capture digest, effective settings, runtime/adapter metadata, global status/reason, and explicit coverage. Findings contain `id`, `kind`, two `records`, `old_relation`, and `new_relation`. Record representations are constructed once per ID and reused in memory; JSON serialization is streamed while preserving the full evidence for every finding. Each record has original `id`/`value`, JSON `escaped` text, and `code_points` in `U+XXXX` notation, using more digits when needed.
 
 Findings sort by the Unicode scalar order of the ID pair. Each unordered pair appears once. Finding IDs use `cd1-` plus the full SHA-256 of requested profile, records, change kind, and signs, so they remain stable across repeated captures despite invocation timestamps. Coverage must be complete on both sides for `STABLE` or `DRIFT`. For partial captures, a finding requires the pair to be observed successfully in either direction on each side. Missing diagonals or reciprocal results do not discard that witness. Each side is independently oriented by stable IDs using the comparator's reciprocal sign rule. Opposite observed directions are sufficient; this normalization does not mark missing comparisons as completed. Known findings with any incomplete side produce `DRIFT_INCOMPLETE`; otherwise incomplete observations produce `INCOMPLETE`. Schema/compatibility/consistency errors have no valid comparison report and are printed to stderr with exit 3.
+
+## Browser export v1
+
+This is an observation from a user-opened static page, **not executable adapter
+stdout or a capture**. `collationdelta import-browser EXPORT --output CAPTURE` accepts
+it without launching a browser, executing commands, fetching URLs or resolving paths
+from the file. The existing strict UTF-8/Unicode JSON decoder is unchanged. Duplicate
+object keys (including escaped aliases), unpaired surrogates, non-finite/overflowing
+numbers and nonzero numeric underflow are errors.
+
+The exact root fields are:
+
+- `browser_export_version`: integer `1`.
+- `corpus` and `requested`: existing corpus/profile v1 documents. This path requires
+  `intl.collator.v1`. Each compact UTF-8 document is at most 1 MiB; the complete export
+  file is at most 16 MiB. The page additionally limits each uploaded file to 1 MiB.
+- `observation`: protocol v1 response from the shared `observeIntl()`. Successful
+  result values must already be integer signs `-1`, `0`, `1`, never booleans, floats,
+  strings or arbitrary magnitudes. The page normalizes the native comparator return
+  before JSON serialization. This intentionally differs from raw executable stdout,
+  where the existing exact-decimal normalization still applies.
+- `coverage`: the existing coverage object. The CLI recomputes it and requires exact
+  agreement, including types. All ordered pairs must be present for status `ok`;
+  individual `error` results remain incomplete. Timeouts/cancellations do not export
+  a truncated prefix. `unsupported` has no results and remains incomplete.
+- `metadata`: exactly `page_version: 1`, `captured_at` (UTC ISO timestamp),
+  `execution_context: {"kind":"dedicated-worker","has_document":false,"has_process":false}`,
+  `user_agent`, `navigator_platform`, and `caller_labels: {"label": "..."}`.
+  Browser-reported user agent/platform strings are limited to 4096 scalar characters
+  each, and the optional caller label to 256. Empty strings represent unavailable
+  browser strings or an omitted label. No engine, architecture, ICU/CLDR, executable,
+  process limits or browser version are inferred.
+
+`observation.adapter` is exactly `{"contract":"intl.collator.v1"}`;
+`observation.runtime` contains only `intl`, with exactly `canonical_locale`,
+`supported_locales`, `resolved_options`. Unknown values are null. Supported locales
+are null, empty, or the singleton recorded canonical locale. Known resolved options
+are exactly `locale`, `usage`, `sensitivity`, `ignorePunctuation`, `collation`,
+`numeric`, `caseFirst`, with the types/values defined by this contract, and must equal
+`effective`. A successful observation requires supported locale metadata and resolved
+settings. Explicit requested options and recognized canonical `co`/`kn`/`kf` requests
+must agree with those settings. Failed negotiation is exported as `unsupported` with
+its reason and any known settings; it never substitutes fallback results.
+
+The page validates input safety and bounds. Python is the acceptance boundary for
+saved evidence: it checks schemas, signs, coverage, duplicate/unrequested pairs,
+identical strings, diagonal/reciprocal relations, equality transitivity and order
+cycles with the existing relation validator. It does not reconstruct another
+browser's Intl locale database or prove that a canonical locale/negotiation claim is
+authentic. Metadata and consistent fabricated comparisons cannot establish runtime
+identity. Labels are explicitly caller supplied.
+
+There is **no digest in browser export v1**. This avoids imposing Python's
+canonicalization rules on JavaScript. JSON.stringify preserves scalar strings via
+UTF-8 or escapes, including controls and supplementary characters. The importer
+rejects decimal spellings such as `1.0` for relation signs; there is no permissive
+nested-number decoder. Ordinary profile/metadata numbers retain the existing Python
+JSON semantics. Imported evidence receives the capture digest described below;
+neither the export nor a digest authenticates its sender.
+
+## Capture format v2: browser provenance
+
+Executable `capture` continues to write v1. Browser import writes v2, containing
+exactly `format_version: 2`, `corpus`, `requested`, normalized `observation`, recomputed
+`coverage`, `provenance` and `digest`. There is no `run` object or invented argv/cwd.
+
+`provenance` contains exactly:
+
+```json
+{
+  "version": 1,
+  "kind": "browser-export",
+  "browser_export_version": 1,
+  "metadata": { "page_version": 1, "captured_at": "2026-11-02T12:00:00.000Z",
+    "execution_context": { "kind": "dedicated-worker", "has_document": false, "has_process": false },
+    "user_agent": "browser-reported string", "navigator_platform": "browser-reported string",
+    "caller_labels": { "label": "optional caller claim" } },
+  "importer": { "tool_version": "0.2.0", "imported_at": "2026-11-02T12:01:00+00:00" }
+}
+```
+
+The metadata above illustrates the schema, not a real browser claim. The importer
+records its own tool version and UTC time separately from page-observed time and
+caller labels. V2 uses the **same Python digest canonicalization** as v1, over the
+whole capture except `digest`. Import validates before atomic replacement; malformed
+exports and serialization failures preserve an existing output. Exit 0 means complete,
+2 means valid incomplete/unsupported evidence saved, and 3 means validation/I/O error.
+
+The updated offline compare accepts v1 and v2 together and preserves all previous
+compatibility rules. V1 reports are unchanged. For a v2 side, report v1's side object
+also includes its `provenance`, so JSON reports retain source context. Human output
+continues to show settings and coverage; provenance is in the saved capture/report.
+Older CLI versions do not understand v2; old v1 artifacts require no migration.
