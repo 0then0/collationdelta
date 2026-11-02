@@ -83,7 +83,7 @@ For native browser capture, see the
 `collationdelta browser-adapter` prints the bundled browser adapter path. Browser
 installation and executable selection are explicit; capture never downloads a browser.
 
-## Capture from an open browser (unreleased)
+## Capture from an open browser (0.3.0)
 
 The source build also includes a small static capture page. Open it in your browser,
 choose corpus/profile JSON (or the built-in example), run native `Intl.Collator` in a
@@ -106,8 +106,7 @@ its resources use the network; file contents/results are not uploaded.
 Browser export v1 becomes capture v2 with separate browser metadata, caller labels
 and importer metadata. Existing capture v1 files remain readable and comparable.
 Unsupported evidence stays INCOMPLETE; metadata and digests do not authenticate a
-runtime. This feature is local source work, not part of the published 0.2.0 release
-and not a published Pages site.
+runtime. This feature requires version 0.3.0 or newer. The Pages site has not been published.
 
 ## Inputs
 

@@ -1,6 +1,6 @@
 # Browser capture
 
-## Capture in an open browser (unreleased milestone)
+## Capture in an open browser (0.3.0)
 
 Use the static page when the runtime is the browser you can open: Chromium, Firefox,
 Safari or a mobile browser with module Worker support. No Node, Playwright, backend
@@ -49,7 +49,7 @@ uv run --locked collationdelta compare /tmp/node.capture.json /tmp/browser.captu
 An unsupported export is valid evidence: import saves it and returns 2; compare stays
 `INCOMPLETE`, including a refusal compared with itself. Invalid evidence returns 3 and
 preserves an existing destination. The released 0.2.0 CLI does not include
-`import-browser`; these commands require the updated source build. Existing executable
+`import-browser`; these commands require version 0.3.0 or newer. Existing executable
 captures stay v1; imported browser captures are v2 and compare with v1 offline.
 
 ### Limits, provenance and privacy

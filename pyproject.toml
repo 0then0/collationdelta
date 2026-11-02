@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "collationdelta"
-version = "0.2.0"
+version = "0.3.0"
 description = "Detect string ordering and equality changes before a runtime upgrade."
 readme = "README.md"
 requires-python = ">=3.10"

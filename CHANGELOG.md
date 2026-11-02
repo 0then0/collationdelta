@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.3.0
+
 - Add a responsive static browser capture page with one example, exact JSON inputs,
   native Dedicated Worker Intl observations, bounded time/output, cancellation and
   explicit unsupported exports. Build from the shared evaluator without duplicating it.
