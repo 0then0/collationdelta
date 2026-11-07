@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.4.0
+
 - Add a PostgreSQL 15–18 capture adapter (`postgresql.text.v1`, `collationdelta
   postgres-adapter`). It runs `psql` in one read-only transaction and records the server's
   `<`, `=` and `>` for every ordered pair under an explicit schema-qualified collation,

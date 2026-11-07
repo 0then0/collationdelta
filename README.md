@@ -108,7 +108,7 @@ and importer metadata. Existing capture v1 files remain readable and comparable.
 Unsupported evidence stays INCOMPLETE; metadata and digests do not authenticate a
 runtime. This feature requires version 0.3.0 or newer. The Pages site has not been published.
 
-## Capture PostgreSQL text comparisons (unreleased)
+## Capture PostgreSQL text comparisons (0.4.0)
 
 The `postgres-adapter` records what a PostgreSQL 15–18 server returns for `<`, `=` and
 `>` on `text` under one named, schema-qualified collation, using `psql` in a read-only
@@ -127,7 +127,7 @@ by bytes, so equality here is the server's `=`. Server version, encoding and col
 properties are recorded as metadata, and only differing pairs are findings. The
 [PostgreSQL guide](docs/postgres-capture.md) covers support, limits and failures, and the
 [saved two-server case](evidence/postgres-collation/README.md) is a configuration
-control with reproduction steps.
+control with reproduction steps. This feature requires version 0.4.0 or newer.
 
 ## Inputs
 

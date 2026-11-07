@@ -152,7 +152,7 @@ cleanup cannot run after SIGKILL. The process cleanup guarantee applies to the t
 native executable and descendants that retain the supervisor group. Arbitrary wrappers
 which detach processes are outside that guarantee.
 
-## PostgreSQL integration (unreleased)
+## PostgreSQL integration (0.4.0)
 
 Unit tests drive the adapter with a scripted `psql`: exact script and argv, read-only
 transaction, hostile values and names, recorded facts, unavailable facts, refusals,
