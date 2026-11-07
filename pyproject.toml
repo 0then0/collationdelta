@@ -47,7 +47,7 @@ dev = [
 where = ["src"]
 
 [tool.setuptools.package-data]
-collationdelta = ["adapters/*.mjs"]
+collationdelta = ["adapters/*.mjs", "adapters/*.py"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

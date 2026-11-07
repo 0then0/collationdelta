@@ -1,0 +1,22 @@
+DRIFT | findings=2 | complete=true
+old: entries=25 comparisons=625/625 missing=0 failed=0 complete=true
+new: entries=25 comparisons=625/625 missing=0 failed=0 complete=true
+Equality means compare(a, b) == 0.
+
+cd1-8bbb89ba79898b718df095157ca97e398e3169bfdd340c45b7daf62e24009f45 order_reversal
+  "lower-a": "a" [U+0061]
+  "upper-a": "A" [U+0041]
+  relation: +1 -> -1
+  old runtime={"client": {"program": "psql", "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"}, "postgresql": {"client_encoding": "UTF8", "collation": {"actual": "153.128", "match": true, "stored": "153.128"}, "server_encoding": "UTF8", "server_version": "18.6 (Debian 18.6-1.pgdg13+2)", "server_version_num": 180006, "unavailable": {"collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"}, "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"}}
+  old effective={"collation": {"deterministic": true, "icu_rules": null, "lc_collate": null, "lc_ctype": null, "locale": "und-u-kf-upper", "name": "cd_order", "provider": "icu", "schema": "cd_stand"}, "contract": "postgresql.text.v1", "operators": ["<", "=", ">"]}
+  new runtime={"client": {"program": "psql", "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"}, "postgresql": {"client_encoding": "UTF8", "collation": {"actual": "153.128", "match": true, "stored": "153.128"}, "server_encoding": "UTF8", "server_version": "18.6 (Debian 18.6-1.pgdg13+2)", "server_version_num": 180006, "unavailable": {"collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"}, "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"}}
+  new effective={"collation": {"deterministic": true, "icu_rules": null, "lc_collate": null, "lc_ctype": null, "locale": "und-u-kf-lower", "name": "cd_order", "provider": "icu", "schema": "cd_stand"}, "contract": "postgresql.text.v1", "operators": ["<", "=", ">"]}
+
+cd1-1862633edbc1e48428714bdca873227f415daba9fb541786d7c0ab6bfbd0d62f order_reversal
+  "lower-b": "b" [U+0062]
+  "upper-b": "B" [U+0042]
+  relation: +1 -> -1
+  old runtime={"client": {"program": "psql", "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"}, "postgresql": {"client_encoding": "UTF8", "collation": {"actual": "153.128", "match": true, "stored": "153.128"}, "server_encoding": "UTF8", "server_version": "18.6 (Debian 18.6-1.pgdg13+2)", "server_version_num": 180006, "unavailable": {"collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"}, "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"}}
+  old effective={"collation": {"deterministic": true, "icu_rules": null, "lc_collate": null, "lc_ctype": null, "locale": "und-u-kf-upper", "name": "cd_order", "provider": "icu", "schema": "cd_stand"}, "contract": "postgresql.text.v1", "operators": ["<", "=", ">"]}
+  new runtime={"client": {"program": "psql", "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"}, "postgresql": {"client_encoding": "UTF8", "collation": {"actual": "153.128", "match": true, "stored": "153.128"}, "server_encoding": "UTF8", "server_version": "18.6 (Debian 18.6-1.pgdg13+2)", "server_version_num": 180006, "unavailable": {"collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)", "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"}, "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"}}
+  new effective={"collation": {"deterministic": true, "icu_rules": null, "lc_collate": null, "lc_ctype": null, "locale": "und-u-kf-lower", "name": "cd_order", "provider": "icu", "schema": "cd_stand"}, "contract": "postgresql.text.v1", "operators": ["<", "=", ">"]}

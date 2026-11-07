@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Add a PostgreSQL 15–18 capture adapter (`postgresql.text.v1`, `collationdelta
+  postgres-adapter`). It runs `psql` in one read-only transaction and records the server's
+  `<`, `=` and `>` for every ordered pair under an explicit schema-qualified collation,
+  with the corpus sent as data and no objects created. Server version, encoding and
+  collation properties (provider, locale, deterministic, stored and actual version) are
+  recorded as effective/runtime metadata; unavailable facts carry reasons. Refusals,
+  U+0000 strings, timeouts and truncated output stay explicit and incomplete.
+- Add a reproducible two-server configuration-control stand with pinned image digest,
+  saved captures/reports/direct SQL confirmation, and a 15–18 provider matrix.
+  Capture, report and protocol formats are unchanged.
+- Refine the project icon.
+
 ## 0.3.0
 
 - Add a responsive static browser capture page with one example, exact JSON inputs,

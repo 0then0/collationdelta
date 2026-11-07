@@ -1,0 +1,43 @@
+{
+  "image": "postgres",
+  "tag": "18",
+  "digest": "sha256:e3d24f6906d0760bf4da0dae872415391ededefad23fd471c47dc53b0ddf3c42",
+  "expected": {
+    "server_version_num": 180006,
+    "server_encoding": "UTF8"
+  },
+  "scope": "configuration control: the same server image in two environments; only the collation definitions differ",
+  "schema": "cd_stand",
+  "environments": {
+    "old": {
+      "cd_order": {
+        "provider": "icu",
+        "locale": "und-u-kf-upper",
+        "deterministic": true
+      },
+      "cd_equality": {
+        "provider": "icu",
+        "locale": "und-u-ks-level3",
+        "deterministic": false
+      }
+    },
+    "new": {
+      "cd_order": {
+        "provider": "icu",
+        "locale": "und-u-kf-lower",
+        "deterministic": true
+      },
+      "cd_equality": {
+        "provider": "icu",
+        "locale": "und-u-ks-level1",
+        "deterministic": false
+      }
+    }
+  },
+  "matrix": {
+    "15": "sha256:1aac5b49cefd627f02816141ca4ad012d6cc19460dfe02a9b5168a105be3fc53",
+    "16": "sha256:f9a7b9ebf6f56201f949db745e47bc423c0f0f8294bafe991cc10bf74b029657",
+    "17": "sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f",
+    "18": "sha256:e3d24f6906d0760bf4da0dae872415391ededefad23fd471c47dc53b0ddf3c42"
+  }
+}

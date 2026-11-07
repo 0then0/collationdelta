@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "contract": "postgresql.text.v1",
+  "locale": "und",
+  "options": {
+    "collation": {
+      "schema": "cd_stand",
+      "name": "cd_order"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "complete": true,
+  "finding_count": 2,
+  "findings": [
+    {
+      "id": "cd1-8bbb89ba79898b718df095157ca97e398e3169bfdd340c45b7daf62e24009f45",
+      "kind": "order_reversal",
+      "new_relation": -1,
+      "old_relation": 1,
+      "records": [
+        {
+          "code_points": [
+            "U+0061"
+          ],
+          "escaped": "\"a\"",
+          "id": "lower-a",
+          "value": "a"
+        },
+        {
+          "code_points": [
+            "U+0041"
+          ],
+          "escaped": "\"A\"",
+          "id": "upper-a",
+          "value": "A"
+        }
+      ]
+    },
+    {
+      "id": "cd1-1862633edbc1e48428714bdca873227f415daba9fb541786d7c0ab6bfbd0d62f",
+      "kind": "order_reversal",
+      "new_relation": -1,
+      "old_relation": 1,
+      "records": [
+        {
+          "code_points": [
+            "U+0062"
+          ],
+          "escaped": "\"b\"",
+          "id": "lower-b",
+          "value": "b"
+        },
+        {
+          "code_points": [
+            "U+0042"
+          ],
+          "escaped": "\"B\"",
+          "id": "upper-b",
+          "value": "B"
+        }
+      ]
+    }
+  ],
+  "report_version": 1,
+  "requested": {
+    "contract": "postgresql.text.v1",
+    "locale": "und",
+    "options": {
+      "collation": {
+        "name": "cd_order",
+        "schema": "cd_stand"
+      }
+    },
+    "version": 1
+  },
+  "sides": {
+    "new": {
+      "adapter": {
+        "contract": "postgresql.text.v1",
+        "name": "collationdelta-postgresql",
+        "statement_timeout_ms": 10000,
+        "version": "1"
+      },
+      "capture_digest": "sha256:f179cd8437fcd382db654bb8347e25ee66acf537db19e392cefe0c9ff168d91f",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 625,
+        "consistency": "verified",
+        "entries": 25,
+        "expected_comparisons": 625,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "collation": {
+          "deterministic": true,
+          "icu_rules": null,
+          "lc_collate": null,
+          "lc_ctype": null,
+          "locale": "und-u-kf-lower",
+          "name": "cd_order",
+          "provider": "icu",
+          "schema": "cd_stand"
+        },
+        "contract": "postgresql.text.v1",
+        "operators": [
+          "<",
+          "=",
+          ">"
+        ]
+      },
+      "reason": null,
+      "runtime": {
+        "client": {
+          "program": "psql",
+          "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"
+        },
+        "postgresql": {
+          "client_encoding": "UTF8",
+          "collation": {
+            "actual": "153.128",
+            "match": true,
+            "stored": "153.128"
+          },
+          "server_encoding": "UTF8",
+          "server_version": "18.6 (Debian 18.6-1.pgdg13+2)",
+          "server_version_num": 180006,
+          "unavailable": {
+            "collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)",
+            "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)",
+            "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"
+          },
+          "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+        }
+      },
+      "status": "ok"
+    },
+    "old": {
+      "adapter": {
+        "contract": "postgresql.text.v1",
+        "name": "collationdelta-postgresql",
+        "statement_timeout_ms": 10000,
+        "version": "1"
+      },
+      "capture_digest": "sha256:e702290b180055aa8501fd698024a33ef2f0073a5b4a9befac949c671288ad40",
+      "coverage": {
+        "complete": true,
+        "completed_comparisons": 625,
+        "consistency": "verified",
+        "entries": 25,
+        "expected_comparisons": 625,
+        "failed_comparisons": 0,
+        "missing_comparisons": 0
+      },
+      "effective": {
+        "collation": {
+          "deterministic": true,
+          "icu_rules": null,
+          "lc_collate": null,
+          "lc_ctype": null,
+          "locale": "und-u-kf-upper",
+          "name": "cd_order",
+          "provider": "icu",
+          "schema": "cd_stand"
+        },
+        "contract": "postgresql.text.v1",
+        "operators": [
+          "<",
+          "=",
+          ">"
+        ]
+      },
+      "reason": null,
+      "runtime": {
+        "client": {
+          "program": "psql",
+          "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"
+        },
+        "postgresql": {
+          "client_encoding": "UTF8",
+          "collation": {
+            "actual": "153.128",
+            "match": true,
+            "stored": "153.128"
+          },
+          "server_encoding": "UTF8",
+          "server_version": "18.6 (Debian 18.6-1.pgdg13+2)",
+          "server_version_num": 180006,
+          "unavailable": {
+            "collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)",
+            "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)",
+            "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"
+          },
+          "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+        }
+      },
+      "status": "ok"
+    }
+  },
+  "status": "DRIFT"
+}

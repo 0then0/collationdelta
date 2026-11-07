@@ -1,0 +1,3946 @@
+{
+  "corpus": {
+    "entries": [
+      {
+        "id": "lower-a",
+        "value": "a"
+      },
+      {
+        "id": "upper-a",
+        "value": "A"
+      },
+      {
+        "id": "lower-b",
+        "value": "b"
+      },
+      {
+        "id": "upper-b",
+        "value": "B"
+      },
+      {
+        "id": "e",
+        "value": "e"
+      },
+      {
+        "id": "e-acute-composed",
+        "value": "\u00e9"
+      },
+      {
+        "id": "e-acute-decomposed",
+        "value": "e\u0301"
+      },
+      {
+        "id": "f",
+        "value": "f"
+      },
+      {
+        "id": "a-umlaut-composed",
+        "value": "\u00e4"
+      },
+      {
+        "id": "a-umlaut-decomposed",
+        "value": "a\u0308"
+      },
+      {
+        "id": "sharp-s",
+        "value": "\u00df"
+      },
+      {
+        "id": "single-quote",
+        "value": "it's"
+      },
+      {
+        "id": "double-quote",
+        "value": "\"q\""
+      },
+      {
+        "id": "curly-quotes",
+        "value": "\u201cq\u201d"
+      },
+      {
+        "id": "backslash",
+        "value": "a\\b"
+      },
+      {
+        "id": "backslash-n-literal",
+        "value": "a\\nb"
+      },
+      {
+        "id": "newline",
+        "value": "a\nb"
+      },
+      {
+        "id": "crlf",
+        "value": "a\r\nb"
+      },
+      {
+        "id": "empty",
+        "value": ""
+      },
+      {
+        "id": "space",
+        "value": " "
+      },
+      {
+        "id": "percent",
+        "value": "%"
+      },
+      {
+        "id": "underscore",
+        "value": "_"
+      },
+      {
+        "id": "sql-text",
+        "value": "x'); DROP TABLE t; --"
+      },
+      {
+        "id": "emoji",
+        "value": "\ud83d\ude00"
+      },
+      {
+        "id": "identifier-text",
+        "value": "\"cd_stand\".\"cd_order\""
+      }
+    ],
+    "version": 1
+  },
+  "coverage": {
+    "complete": true,
+    "completed_comparisons": 625,
+    "consistency": "verified",
+    "entries": 25,
+    "expected_comparisons": 625,
+    "failed_comparisons": 0,
+    "missing_comparisons": 0
+  },
+  "digest": "sha256:7befd7fcf9da91c720b75694c1e277d5b595d844a40dc0f3a7e24ea8d3c96696",
+  "format_version": 1,
+  "observation": {
+    "adapter": {
+      "contract": "postgresql.text.v1",
+      "name": "collationdelta-postgresql",
+      "statement_timeout_ms": 10000,
+      "version": "1"
+    },
+    "effective": {
+      "collation": {
+        "deterministic": true,
+        "icu_rules": null,
+        "lc_collate": null,
+        "lc_ctype": null,
+        "locale": "und-u-kf-lower",
+        "name": "cd_order",
+        "provider": "icu",
+        "schema": "cd_stand"
+      },
+      "contract": "postgresql.text.v1",
+      "operators": [
+        "<",
+        "=",
+        ">"
+      ]
+    },
+    "protocol_version": 1,
+    "results": [
+      {
+        "left": "a-umlaut-composed",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-composed",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "a-umlaut-decomposed",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "backslash",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "backslash",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "backslash-n-literal",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "crlf",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "crlf",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "crlf",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "crlf",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "curly-quotes",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "curly-quotes",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "double-quote",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "double-quote",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "double-quote",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "double-quote",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "double-quote",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "double-quote",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "e",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "e",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-composed",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "e-acute-decomposed",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "emoji",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "emoji",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "emoji",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "emoji",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "double-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "empty",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "empty",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "space",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "underscore",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "empty",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "f",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "f",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "f",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "f",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "f",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "f",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "f",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "identifier-text",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "double-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "identifier-text",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "identifier-text",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "identifier-text",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "identifier-text",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "identifier-text",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower-a",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-a",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-a",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "lower-b",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "lower-b",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "lower-b",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "newline",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "newline",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "newline",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "newline",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "percent",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "percent",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "percent",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "percent",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "sharp-s",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "f",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "sharp-s",
+        "right": "single-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "sharp-s",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sharp-s",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "f",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "single-quote",
+        "right": "single-quote",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "single-quote",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "single-quote",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "single-quote",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "space",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "double-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "space",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "space",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "space",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "underscore",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "space",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "sql-text",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "e",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "f",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "single-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "sql-text",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "sql-text",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "sql-text",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "underscore",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "double-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "emoji",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "underscore",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "lower-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "percent",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "underscore",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "underscore",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "underscore",
+        "right": "upper-a",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "underscore",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "backslash",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "crlf",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "lower-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "newline",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-a",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-a",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 0
+      },
+      {
+        "left": "upper-a",
+        "right": "upper-b",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "a-umlaut-composed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "a-umlaut-decomposed",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "backslash",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "backslash-n-literal",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "crlf",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "curly-quotes",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "double-quote",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "e",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "e-acute-composed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "e-acute-decomposed",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "emoji",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "empty",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "f",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "identifier-text",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "lower-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "lower-b",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "newline",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "percent",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "sharp-s",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "single-quote",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "space",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "sql-text",
+        "status": "ok",
+        "value": -1
+      },
+      {
+        "left": "upper-b",
+        "right": "underscore",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "upper-a",
+        "status": "ok",
+        "value": 1
+      },
+      {
+        "left": "upper-b",
+        "right": "upper-b",
+        "status": "ok",
+        "value": 0
+      }
+    ],
+    "runtime": {
+      "client": {
+        "program": "psql",
+        "version": "psql (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)"
+      },
+      "postgresql": {
+        "client_encoding": "UTF8",
+        "collation": {
+          "actual": "153.128",
+          "match": true,
+          "stored": "153.128"
+        },
+        "server_encoding": "UTF8",
+        "server_version": "18.6 (Debian 18.6-1.pgdg13+2)",
+        "server_version_num": 180006,
+        "unavailable": {
+          "collation.icu_rules": "NULL in pg_collation (unset or not applicable to icu)",
+          "collation.lc_collate": "NULL in pg_collation (unset or not applicable to icu)",
+          "collation.lc_ctype": "NULL in pg_collation (unset or not applicable to icu)"
+        },
+        "version": "PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+      }
+    },
+    "status": "ok"
+  },
+  "requested": {
+    "contract": "postgresql.text.v1",
+    "locale": "und",
+    "options": {
+      "collation": {
+        "name": "cd_order",
+        "schema": "cd_stand"
+      }
+    },
+    "version": 1
+  },
+  "run": {
+    "argv": [
+      "/Users/user/Dev/collationdelta/.venv/bin/python",
+      "/Users/user/Dev/collationdelta/src/collationdelta/adapters/postgres.py"
+    ],
+    "captured_at": "2026-11-07T18:38:45.174123+00:00",
+    "cwd": "/Users/user/Dev/collationdelta",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "stderr": "",
+    "stderr_limit_bytes": 1048576,
+    "stdout_limit_bytes": 16777216,
+    "timeout_seconds": 30.0,
+    "tool_version": "0.3.0"
+  }
+}

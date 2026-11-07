@@ -152,6 +152,30 @@ cleanup cannot run after SIGKILL. The process cleanup guarantee applies to the t
 native executable and descendants that retain the supervisor group. Arbitrary wrappers
 which detach processes are outside that guarantee.
 
+## PostgreSQL integration (unreleased)
+
+Unit tests drive the adapter with a scripted `psql`: exact script and argv, read-only
+transaction, hostile values and names, recorded facts, unavailable facts, refusals,
+partial/truncated/malformed output, timeouts, connection failure, missing client and
+credential redaction. Metadata-only differences compare as `STABLE`. They always run.
+
+Real-server tests run with Docker and the image pinned in `scripts/postgres-pins.json`
+already present locally (tests never pull; a missing image fails):
+
+```sh
+COLLATIONDELTA_POSTGRES_STAND=1 uv run --locked pytest -q tests/test_postgres.py
+```
+
+They start two PostgreSQL 18.6 containers and check repeat stability, an order
+reversal confirmed by direct SQL, adapter signs against direct SQL for hostile strings
+in a nondeterministic collation, hostile schema and collation names, a missing collation,
+U+0000, a refused connection, a statement timeout, real output cut off after three lines,
+password authentication over TCP with a wrong and a correct password, and that no user
+table appears in the database. Saved evidence is reanalyzed offline in the ordinary suite.
+Verified on macOS arm64 with Docker Desktop and the official `postgres` images 15.19,
+16.15, 17.11 and 18.6 (linux/arm64); other platforms, majors and the Linux host `psql`
+are not verified. See the [PostgreSQL guide](postgres-capture.md).
+
 ## Open-browser page milestone (unreleased)
 
 The static page was exercised on macOS arm64 in actual Chromium 156.0.8078.4 and

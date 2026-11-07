@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/0then0/collationdelta/main/docs/icon.svg" width="88" height="88" alt="CollationDelta: two string relations joined by a delta" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/0then0/collationdelta/main/docs/icon.svg" width="88" height="88" alt="CollationDelta: a string relation changes from less-than to equal, marked by a delta" /></p>
 
 # CollationDelta
 
@@ -107,6 +107,27 @@ Browser export v1 becomes capture v2 with separate browser metadata, caller labe
 and importer metadata. Existing capture v1 files remain readable and comparable.
 Unsupported evidence stays INCOMPLETE; metadata and digests do not authenticate a
 runtime. This feature requires version 0.3.0 or newer. The Pages site has not been published.
+
+## Capture PostgreSQL text comparisons (unreleased)
+
+The `postgres-adapter` records what a PostgreSQL 15–18 server returns for `<`, `=` and
+`>` on `text` under one named, schema-qualified collation, using `psql` in a read-only
+transaction. Capture the same corpus and profile on the old and the new server, then
+compare the two files offline:
+
+```sh
+uv run --locked collationdelta capture \
+  --corpus examples/postgres/corpus.json --profile examples/postgres/order.profile.json \
+  --output /tmp/old.json -- python "$(uv run --locked collationdelta postgres-adapter)"
+```
+
+Connection and authentication come from the standard `psql`/libpq environment;
+credentials never go into argv, the script or captures. For deterministic collations PostgreSQL resolves ties
+by bytes, so equality here is the server's `=`. Server version, encoding and collation
+properties are recorded as metadata, and only differing pairs are findings. The
+[PostgreSQL guide](docs/postgres-capture.md) covers support, limits and failures, and the
+[saved two-server case](evidence/postgres-collation/README.md) is a configuration
+control with reproduction steps.
 
 ## Inputs
 
@@ -217,7 +238,8 @@ provenance separately when it matters. Captures may include sensitive strings an
 Stability on a finite corpus says nothing about all Unicode strings. Drift means a
 change from the selected baseline, not a specification violation. CollationDelta does
 not implement UCA, supply locale data, repair sorting, validate database indexes, or
-establish SQL `UNIQUE`/`GROUP BY` behavior.
+establish SQL `UNIQUE`/`GROUP BY` behavior. The PostgreSQL adapter observes `text`
+comparison operators under a named collation; it still does not inspect indexes or data.
 
 [Unicode Conformance](https://github.com/unicode-org/conformance) tests against
 Unicode/CLDR specifications. CollationDelta uses your saved comparator baseline.

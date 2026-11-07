@@ -95,6 +95,22 @@ uses isolated credential storage in its temporary profile. See
 executable selection, supported environment, additional adapter limits, process-group
 cleanup, provenance and the pinned acceptance case.
 
+## PostgreSQL reference adapter
+
+`collationdelta postgres-adapter` locates `postgres.py`, a standard-library adapter for
+contract `postgresql.text.v1`. It drives the installed `psql` client and records the
+server's own `<`, `=` and `>` results for `text` under a named, schema-qualified
+collation, so deterministic collations keep PostgreSQL's byte tie-break and equality is
+SQL `=`. The profile is `locale: "und"` with exactly
+`options.collation: {"schema": ..., "name": ...}`. Server and collation facts go into
+`effective` (collation provider, locale, rules, deterministic) and `runtime.postgresql`
+(server version and encoding, stored and actual collation version, explicit
+`unavailable` reasons), never into the requested profile. Supported servers are
+PostgreSQL 15 through 18 with UTF8 encoding. Unsupported profiles, servers and missing
+collations return `unsupported`; a server failure after contact returns `unresolved`
+with the completed rows; no server contact is an adapter error. See
+[postgres-capture.md](postgres-capture.md).
+
 ## Custom application adapter
 
 [application_adapter.py](../examples/application_adapter.py) is a runnable example showing where to import and call a real application comparator, return exceptions as pair failures, and supply runtime/effective metadata. Its demonstration contract is `demo.scalar-order.v1`, locale `und`, options `{}`. The example comparator uses Python scalar lexicographic order and is not a linguistic implementation.

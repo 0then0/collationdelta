@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "lower-a",
+      "value": "a"
+    },
+    {
+      "id": "upper-a",
+      "value": "A"
+    },
+    {
+      "id": "lower-b",
+      "value": "b"
+    },
+    {
+      "id": "upper-b",
+      "value": "B"
+    },
+    {
+      "id": "e",
+      "value": "e"
+    },
+    {
+      "id": "e-acute-composed",
+      "value": "é"
+    },
+    {
+      "id": "e-acute-decomposed",
+      "value": "é"
+    },
+    {
+      "id": "f",
+      "value": "f"
+    },
+    {
+      "id": "a-umlaut-composed",
+      "value": "ä"
+    },
+    {
+      "id": "a-umlaut-decomposed",
+      "value": "ä"
+    },
+    {
+      "id": "sharp-s",
+      "value": "ß"
+    },
+    {
+      "id": "single-quote",
+      "value": "it's"
+    },
+    {
+      "id": "double-quote",
+      "value": "\"q\""
+    },
+    {
+      "id": "curly-quotes",
+      "value": "“q”"
+    },
+    {
+      "id": "backslash",
+      "value": "a\\b"
+    },
+    {
+      "id": "backslash-n-literal",
+      "value": "a\\nb"
+    },
+    {
+      "id": "newline",
+      "value": "a\nb"
+    },
+    {
+      "id": "crlf",
+      "value": "a\r\nb"
+    },
+    {
+      "id": "empty",
+      "value": ""
+    },
+    {
+      "id": "space",
+      "value": " "
+    },
+    {
+      "id": "percent",
+      "value": "%"
+    },
+    {
+      "id": "underscore",
+      "value": "_"
+    },
+    {
+      "id": "sql-text",
+      "value": "x'); DROP TABLE t; --"
+    },
+    {
+      "id": "emoji",
+      "value": "😀"
+    },
+    {
+      "id": "identifier-text",
+      "value": "\"cd_stand\".\"cd_order\""
+    }
+  ]
+}

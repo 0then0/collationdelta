@@ -6,6 +6,7 @@ recursive-include docs *.md *.svg
 recursive-include examples *.json *.py *.mjs
 recursive-include scripts *.py *.json
 recursive-include scripts *.mjs
+recursive-include scripts *.sh
 recursive-include web *.html *.css *.mjs
 recursive-include evidence *.json *.txt *.md
 recursive-include tests *.py

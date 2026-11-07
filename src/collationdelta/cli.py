@@ -50,14 +50,19 @@ def parser():
     diff.add_argument("--limit", type=int, default=20, help="maximum findings in human output only")
     commands.add_parser("node-adapter", help="print the bundled Intl.Collator adapter path")
     commands.add_parser("browser-adapter", help="print the optional Chromium adapter path")
+    commands.add_parser("postgres-adapter", help="print the PostgreSQL (psql) adapter path")
     return root
 
 
 def main(argv=None):
     try:
         args = parser().parse_args(argv)
-        if args.command in ("node-adapter", "browser-adapter"):
-            name = "node.mjs" if args.command == "node-adapter" else "browser.mjs"
+        if args.command in ("node-adapter", "browser-adapter", "postgres-adapter"):
+            name = {
+                "node-adapter": "node.mjs",
+                "browser-adapter": "browser.mjs",
+                "postgres-adapter": "postgres.py",
+            }[args.command]
             print(Path(__file__).parent / "adapters" / name)
             return 0
         if args.command in ("capture", "import-browser"):
