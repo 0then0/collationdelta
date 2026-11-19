@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.5.0
+
 - Add a disposable PostgreSQL check for single-column unique B-tree indexes under two
   collation configurations. Record both index outcomes and SQLSTATEs, confirm conflict
   pairs with the read-only comparison adapter, and save a reproducible ICU case with
