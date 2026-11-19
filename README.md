@@ -129,6 +129,27 @@ properties are recorded as metadata, and only differing pairs are findings. The
 [saved two-server case](evidence/postgres-collation/README.md) is a configuration
 control with reproduction steps. This feature requires version 0.4.0 or newer.
 
+## Check PostgreSQL uniqueness after a collation change
+
+From a source checkout, run the check with Docker and the pinned PostgreSQL image
+already present. The script loads the same corpus into two disposable instances and
+attempts to build a unique B-tree index on one `text NOT NULL` column with an explicit
+schema-qualified collation in each instance.
+
+```sh
+uv run --locked python scripts/check_postgres_unique.py \
+  --corpus examples/postgres/unique-conflict.json \
+  --output /tmp/postgres-unique-conflict.json
+```
+
+The JSON report records each index outcome, available SQLSTATE and provenance, the corpus
+hash, and the IDs and values of confirmed witnesses. `new_conflict` means the source
+index built and the target returned `23505`. The witness confirms that PostgreSQL found
+the pair unequal on the source and equal on the target. The report preserves the index
+outcomes with `complete: false` if witness confirmation fails. The saved experiment
+includes image setup, custom collation configuration, input limits and control runs.
+[Saved index experiment](evidence/postgres-collation/README.md#unique-index-experiment)
+
 ## Inputs
 
 Corpus JSON assigns a stable ID to each exact string:
@@ -236,10 +257,12 @@ provenance separately when it matters. Captures may include sensitive strings an
 ## Scope
 
 Stability on a finite corpus says nothing about all Unicode strings. Drift means a
-change from the selected baseline, not a specification violation. CollationDelta does
-not implement UCA, supply locale data, repair sorting, validate database indexes, or
-establish SQL `UNIQUE`/`GROUP BY` behavior. The PostgreSQL adapter observes `text`
-comparison operators under a named collation; it still does not inspect indexes or data.
+change from the selected baseline. The PostgreSQL adapter observes `text` comparison
+operators in a read-only transaction. The disposable index check applies to the supplied
+keys and a single-column unique B-tree with the default `text` operator class. Production
+tables, validation of existing indexes, composite, partial and expression indexes, and
+custom operator classes are outside its scope. UCA implementation, locale data, sorting
+repair, and SQL `GROUP BY` are outside CollationDelta's scope.
 
 [Unicode Conformance](https://github.com/unicode-org/conformance) tests against
 Unicode/CLDR specifications. CollationDelta uses your saved comparator baseline.

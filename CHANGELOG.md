@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add a disposable PostgreSQL check for single-column unique B-tree indexes under two
+  collation configurations. Record both index outcomes and SQLSTATEs, confirm conflict
+  pairs with the read-only comparison adapter, and save a reproducible ICU case with
+  clean and source-duplicate controls.
+
 ## 0.4.0
 
 - Add a PostgreSQL 15–18 capture adapter (`postgresql.text.v1`, `collationdelta

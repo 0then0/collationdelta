@@ -46,3 +46,74 @@ collationdelta compare evidence/postgres-collation/old.order.capture.json \
 Regenerate with `scripts/reproduce_postgres_case.py`; see
 [the guide](../../docs/postgres-capture.md#reproducible-test-stand). Captures record the
 local interpreter and checkout paths of the machine that created them.
+
+## Unique index experiment
+
+The index experiment uses the same pinned PostgreSQL image and the two definitions of
+`cd_stand.cd_equality`. The source uses ICU `und-u-ks-level3` and the target uses ICU
+`und-u-ks-level1`, both with `deterministic = false`. This changes the collation
+configuration while keeping the server image fixed.
+
+[`unique-index.json`](unique-index.json) records the result for the two entries
+`lower-a` (`a`) and `upper-a` (`A`) from the recorded comparison corpus. The earlier
+equality report observes an equality merge for these IDs. The index experiment loads
+them into a temporary `text NOT NULL` column on each server and issues
+`CREATE UNIQUE INDEX ... USING btree` with `COLLATE cd_stand.cd_equality` on the index key.
+The source index builds (`00000`), and the target returns `23505`. A separate `SELECT`
+with the collation returns `false` on the source and `true` on the target.
+
+The clean control (`a`, `b`) builds both indexes. The source-duplicate control stores
+`a` under two IDs and returns `23505` on both sides.
+
+Run these commands from the repository root with Docker running.
+
+```sh
+docker pull postgres@sha256:e3d24f6906d0760bf4da0dae872415391ededefad23fd471c47dc53b0ddf3c42
+uv run --locked python scripts/check_postgres_unique.py \
+  --corpus examples/postgres/unique-conflict.json \
+  --output /tmp/postgres-unique-conflict.json
+uv run --locked python scripts/check_postgres_unique.py \
+  --corpus examples/postgres/unique-clean.json \
+  --output /tmp/postgres-unique-clean.json
+uv run --locked python scripts/check_postgres_unique.py \
+  --corpus examples/postgres/unique-source-duplicate.json \
+  --output /tmp/postgres-unique-source-duplicate.json
+```
+
+The opt-in integration tests exercise the three corpora, an independent equality query,
+a connection failure and a server-side index timeout (`57014`).
+
+```sh
+COLLATIONDELTA_POSTGRES_STAND=1 uv run --locked pytest -q tests/test_postgres_unique.py
+```
+
+Run this standalone equality query on each configured server to check the conflict pair.
+
+```sql
+SELECT ('a'::text COLLATE cd_stand.cd_equality)
+     = ('A'::text COLLATE cd_stand.cd_equality);
+```
+
+The script runs `psql` inside instances it starts for the check. The instances run
+without network access, keep PostgreSQL data in temporary memory-backed storage and
+are removed on exit, including after SIGINT or SIGTERM. `--configuration FILE`
+accepts a JSON object with `source` and `target` definitions. Each definition has
+`schema` and `name` identifier strings, a `provider` (`icu`, `libc`, or `builtin`),
+a `locale`, and a Boolean
+`deterministic`. Omit the option to use the pinned ICU definitions above. The corpus
+uses the regular JSON format and permits duplicate values with distinct IDs. It is
+limited to 1–256 entries, a 32 MiB JSON input file, a 1 MiB canonical JSON document, and
+16 KiB of combined JSON-encoded IDs. U+0000 is rejected in key values.
+`--statement-timeout-ms` defaults to 10000 and accepts 1–60000.
+
+Per-side `index_status` is `built`, `unique_violation`, or `incomplete`. `23505` is
+evidence that the index rejected the keys. PostgreSQL comparisons under the same
+collation confirm the pair. `witness_entries` copies the associated values from the
+input corpus, so treat the report as data from that corpus. The report preserves a
+rejection if witness confirmation is incomplete. The top-level result is `no_conflict`,
+`new_conflict`, `source_conflict`, or `incomplete`, with a separate completeness flag.
+A client failure after an index outcome preserves the SQLSTATE and sets `complete` to
+false. The side records that failure in `process_failure`.
+Exit 0 means the check finished, including a confirmed conflict. Exit 2 with a report
+means the check was incomplete, exit 130 means interrupted, and exit 1 means input
+validation or file I/O failed. Results apply to the supplied keys and index definition.

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "entries": [
+    {"id": "lower-a", "value": "a"},
+    {"id": "lower-b", "value": "b"}
+  ]
+}

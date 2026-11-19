@@ -28,9 +28,9 @@ SHIM = ROOT / "scripts/psql-docker-exec.sh"
 SCENARIOS = {"order": "cd_order", "equality": "cd_equality"}
 
 
-def docker(*args, input=None, check=True, timeout=120):
+def docker(*args, input=None, check=True, timeout=120, env=None):
     done = subprocess.run(
-        ["docker", *args], input=input, capture_output=True, timeout=timeout, check=False
+        ["docker", *args], input=input, capture_output=True, timeout=timeout, check=False, env=env
     )
     if check and done.returncode != 0:
         detail = done.stderr.decode("utf-8", errors="replace").strip()
