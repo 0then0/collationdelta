@@ -371,9 +371,13 @@ def test_browser_context_failures(browser_command, tmp_path, failure):
         )
     elif failure == "stalled-evaluation":
         helper = "export function observeIntl() { while (true) {} }\n"
+        # Give Chromium the normal startup budget and time only the stalled evaluation.
         source = source.replace(
             "const response = await bounded(page.evaluate(observeIntl, request));",
-            "process.stderr.write('browser evaluation started\\n');\n  const response = await bounded(page.evaluate(observeIntl, request));",
+            "clearTimeout(timer);\n"
+            "  timer = setTimeout(() => deadlineFailure(new Error('evaluation deadline')), 2500);\n"
+            "  process.stderr.write('browser evaluation started\\n');\n"
+            "  const response = await bounded(page.evaluate(observeIntl, request));",
         )
     else:
         helper = helper.replace(
@@ -383,8 +387,6 @@ def test_browser_context_failures(browser_command, tmp_path, failure):
     adapter.write_text(source)
     (tmp_path / "intl.mjs").write_text(helper)
     command = [NODE, str(adapter), *browser_command[2:]]
-    if failure == "stalled-evaluation":
-        command += ["--deadline-ms", "2500"]
     if failure == "pair-exception":
         cap = capture(document(["a", "b"]), requested(), command)
         assert cap["coverage"]["failed_comparisons"] == 1
@@ -396,9 +398,9 @@ def test_browser_context_failures(browser_command, tmp_path, failure):
         )
     else:
         with pytest.raises(
-            DeltaError, match="deadline" if failure == "stalled-evaluation" else "closed"
+            DeltaError, match="evaluation deadline" if failure == "stalled-evaluation" else "closed"
         ) as error:
-            capture(document(["a", "b"]), requested(), command, timeout=8)
+            capture(document(["a", "b"]), requested(), command)
         if failure == "stalled-evaluation":
             assert "browser evaluation started" in str(error.value)
 
